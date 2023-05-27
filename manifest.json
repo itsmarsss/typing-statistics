@@ -1,0 +1,24 @@
+{
+  "name": "WPM Count",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "Counts your WPM in the browser",
+  "author": "N/A",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "icons": {
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
