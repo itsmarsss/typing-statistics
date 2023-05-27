@@ -123,7 +123,7 @@ vr {
 .stats-cont {
     width: 50%;
     display: flex;
-    justify-content: center;
+    padding-top: 5px;
     flex-direction: column;
 }
 
