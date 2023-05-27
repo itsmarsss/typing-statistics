@@ -5,14 +5,36 @@ html {
     height: 300px;
 }
 
+body {
+    margin: 0;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
 vr {
     border-left: 1px solid #00000088;
     height: 100%;
 }
 
 #web-list {
+    margin-top: 10px;
+    width: 100%;
     height: 325px;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+.entry>h4 {
+    width: 150px;
+    margin: 0;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.entry-btn {
+    width: 25px;
+    float: right;
+    margin-right: 5px;
 }
 
 .title {
