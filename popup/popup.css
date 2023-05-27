@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 html {
     width: 250px;
     height: 300px;
+}
+
+.title {
+    font-family: 'Poppins';
 }
