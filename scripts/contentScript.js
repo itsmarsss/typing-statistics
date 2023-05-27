@@ -82,17 +82,17 @@ function setTypeData(site) {
     });
 }
 
-function setTypeData(site) {
+function getSiteList() {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get(["sitelist"], function (result) {
             console.log(`SiteList queried`);
 
-            resolve(JSON.parse(result.sitelist || []));
+            resolve(JSON.parse(result.sitelist || "{[]}"));
         });
     });
 }
 
-const setSiteList = async (sitelist) => {
+function setSiteList(sitelist) {
     return new Promise((resolve, reject) => {
         chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, function () {
             console.log(`SiteList setted`);
