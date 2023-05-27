@@ -42,33 +42,39 @@ window.addEventListener("keypress", function (event) {
     console.log("After:\n" + tabdata);
     setTypeData(getCurrentSite());
 
+    console.log("Before:\n" + getSiteList());
     if (!getSiteList().includes(getCurrentSite())) {
         setSiteList(getSiteList().push(getCurrentSite()));
     }
+    console.log("After:\n" + getSiteList());
 });
 
 function getCurrentSite() {
-    return window.location.hostname;
+    return window.location.origin;
 }
 
-const getTypeData = async (site) => {
-    return new Promise((resolve) => {
-        chrome.storage.local.get([site], function (result) {
-            console.log(`TabData for "${site}" queried`);
+function getTypeData(site) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get(site, (result) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            } else {
+                console.log(`TabData for "${site}" queried`);
 
-            tabdata = JSON.parse(result.tabdata) || {};
-            tabdata["site"] = site;
+                tabdata = JSON.parse(result.tabdata || "{}");
+                tabdata["site"] = site;
 
-            console.log(tabdata);
+                console.log(tabdata);
 
-            resolve();
+                resolve();
+            }
         });
     });
 }
 
-const setTypeData = async (site) => {
-    return new Promise((resolve) => {
-        chrome.storage.local.set({ [site]: JSON.stringify(tabdata) }, function () {
+function setTypeData(site) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.set({ site: JSON.stringify(tabdata) }, function () {
             console.log(`TypeData for "${site}" setted`);
 
             resolve();
@@ -76,18 +82,18 @@ const setTypeData = async (site) => {
     });
 }
 
-const getSiteList = async () => {
-    return new Promise((resolve) => {
+function setTypeData(site) {
+    return new Promise((resolve, reject) => {
         chrome.storage.local.get(["sitelist"], function (result) {
             console.log(`SiteList queried`);
 
-            resolve(JSON.parse(result.sitelist) || []);
+            resolve(JSON.parse(result.sitelist || []));
         });
     });
 }
 
 const setSiteList = async (sitelist) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, function () {
             console.log(`SiteList setted`);
 
@@ -97,8 +103,4 @@ const setSiteList = async (sitelist) => {
 }
 console.log("Typing Statistics - Connected");
 
-async function getData() {
-    await getTypeData();
-}
-
-getData();
+getTypeData(getCurrentSite());
