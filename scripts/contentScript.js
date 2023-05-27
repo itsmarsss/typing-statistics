@@ -1,5 +1,6 @@
 var tabdata = {};
-var last_space;
+var last_space = -1;
+var length = 0;
 
 window.addEventListener("keypress", function (event) {
     const key = event.key;
@@ -19,6 +20,25 @@ function updateTabData(key) {
                 tabdata["chars"] = 0;
             }
             tabdata.chars += 1;
+
+            length += 1;
+
+            if (key === " ") {
+                if ((last_space === -1) || (Date.now() - last_space > 5000)) {
+                    last_space = Date.now();
+                } else {
+                    if (!("words" in tabdata)) {
+                        tabdata["words"] = 0;
+                    }
+                    tabdata.words += 1;
+
+                    if (!("avgtime" in tabdata)) {
+                        tabdata["avgtime"] = Date.now() - last_space;
+                    } else {
+                        tabdata.avgtime = ((tabdata.avgtime * (tabdata.words - 1) + (Date.now() - last_space)) / tabdata.words);
+                    }
+                }
+            }
 
             setTypeData(getCurrentSite());
         })

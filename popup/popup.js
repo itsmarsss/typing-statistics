@@ -80,7 +80,7 @@ async function goTo(site) {
         });
 
     leftmain.innerHTML = tabdata.chars || 0;
-    rightmain.innerHTML = tabdata.wpm || 0;
+    rightmain.innerHTML = (60000 / tabdata.avgtime) || 0;
     centermain.innerHTML = assignGrade(rightmain.innerHTML);
 
     viewer.style.transform = "translateX(0px)";
@@ -138,6 +138,7 @@ const sitelist = await getSiteList();
 
 for (let i in sitelist.sites) {
     console.log(sitelist.sites[i].url);
+
     weblist.innerHTML += `
     <div class="entry">
         <h4>${sitelist.sites[i].url}</h4>
