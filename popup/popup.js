@@ -80,7 +80,7 @@ async function goTo(site) {
         });
 
     leftmain.innerHTML = tabdata.chars || 0;
-    rightmain.innerHTML = (60000 / tabdata.avgtime) || 0;
+    rightmain.innerHTML = (Math.round(((60000 / tabdata.avgtime) + Number.EPSILON) * 100) / 100) || 0;
     centermain.innerHTML = assignGrade(rightmain.innerHTML);
 
     viewer.style.transform = "translateX(0px)";
