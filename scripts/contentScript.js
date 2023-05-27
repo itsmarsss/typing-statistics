@@ -1,53 +1,60 @@
-/*
-{
-    sites:[
-        "origin url": {
-            "chars": 11349,
-            "wpm": 60
-        },
-        "origin url": {
-            "chars": 11349,
-            "wpm": 60
-        }
-    ],
-    keys:[
-        "a": 0,
-        "b": 1,
-        ...
-    ]
-}
-*/
-
-var tabdata;
-var last_space
+var tabdata = {};
+var last_space;
 
 window.addEventListener("keypress", function (event) {
     const key = event.key;
-
-    console.log(key);
-
-    getTypeData(getCurrentSite());
-    console.log("Before:\n" + tabdata);
-
-    if (!(key in tabdata)) {
-        tabdata[key] = 0;
-    }
-    tabdata[key] += 1;;
-
-    if (!("chars" in tabdata)) {
-        tabdata["chars"] = 0;
-    }
-    tabdata.chars += 1;
-
-    console.log("After:\n" + tabdata);
-    setTypeData(getCurrentSite());
-
-    console.log("Before:\n" + getSiteList());
-    if (!getSiteList().includes(getCurrentSite())) {
-        setSiteList(getSiteList().push(getCurrentSite()));
-    }
-    console.log("After:\n" + getSiteList());
+    updateTabData(key);
+    updateSiteList();
 });
+
+function updateTabData(key) {
+    getTypeData(getCurrentSite())
+        .then(() => {
+            if (!(key in tabdata)) {
+                tabdata[key] = 0;
+            }
+            tabdata[key] += 1;
+
+            if (!("chars" in tabdata)) {
+                tabdata["chars"] = 0;
+            }
+            tabdata.chars += 1;
+
+            setTypeData(getCurrentSite());
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+async function updateSiteList() {
+    try {
+        const sitelist = await getSiteList();
+        const currentSite = getCurrentSite();
+
+        if (!sitelist || !sitelist.sites || !Array.isArray(sitelist.sites)) {
+            sitelist = { sites: [] };
+        }
+
+        let siteExists = false;
+        for (let i = 0; i < sitelist.sites.length; i++) {
+            if (sitelist.sites[i].url === currentSite) {
+                siteExists = true;
+                break;
+            }
+        }
+
+        if (!siteExists) {
+            sitelist.sites.push({ url: currentSite, chars: 0, wpm: 0 });
+        }
+
+        await setSiteList(sitelist);
+        console.log("Afters:");
+        console.log(await getSiteList());
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 function getCurrentSite() {
     return window.location.origin;
@@ -61,9 +68,10 @@ function getTypeData(site) {
             } else {
                 console.log(`TabData for "${site}" queried`);
 
-                tabdata = JSON.parse(result.tabdata || "{}");
-                tabdata["site"] = site;
+                tabdata = JSON.parse(result[site] || "{}");
+                tabdata.site = site;
 
+                console.log("Before");
                 console.log(tabdata);
 
                 resolve();
@@ -74,8 +82,11 @@ function getTypeData(site) {
 
 function setTypeData(site) {
     return new Promise((resolve, reject) => {
-        chrome.storage.local.set({ site: JSON.stringify(tabdata) }, function () {
-            console.log(`TypeData for "${site}" setted`);
+        chrome.storage.local.set({ [site]: JSON.stringify(tabdata) }, () => {
+            console.log(`TypeData for "${site}" set`);
+
+            console.log("After");
+            console.log(tabdata);
 
             resolve();
         });
@@ -84,23 +95,35 @@ function setTypeData(site) {
 
 function getSiteList() {
     return new Promise((resolve, reject) => {
-        chrome.storage.local.get(["sitelist"], function (result) {
-            console.log(`SiteList queried`);
+        chrome.storage.local.get(["sitelist"], (result) => {
+            console.log("SiteList queried");
 
-            resolve(JSON.parse(result.sitelist || "{[]}"));
+            const sitelist = JSON.parse(result.sitelist || '{"sites": []}');
+
+            console.log("Before");
+            console.log(sitelist);
+
+            resolve(sitelist);
         });
     });
 }
 
 function setSiteList(sitelist) {
     return new Promise((resolve, reject) => {
-        chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, function () {
-            console.log(`SiteList setted`);
+        chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, () => {
+            console.log("SiteList set");
+
+            console.log("After");
+            console.log(sitelist);
 
             resolve();
         });
     });
 }
+
 console.log("Typing Statistics - Connected");
 
-getTypeData(getCurrentSite());
+getTypeData(getCurrentSite())
+    .catch((error) => {
+        console.error(error);
+    });
