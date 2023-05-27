@@ -19,7 +19,7 @@
 */
 
 const weblist = document.getElementById("web-list");
-const entries = document.getElementsByClassName("entry");
+const entries = document.getElementsByClassName("entry-btn");
 
 function getSiteList() {
     return new Promise((resolve, reject) => {
@@ -37,15 +37,7 @@ function getSiteList() {
 }
 
 function goTo(site) {
-
-}
-
-for (let i = 0; i < entries.length; i++) {
-    const entry = elements[i];
-
-    entry.addEventListener("click", function () {
-        goTo(entry.dataset.url);
-    });
+    console.log("Go To " + site);
 }
 
 const sitelist = await getSiteList();
@@ -53,9 +45,17 @@ const sitelist = await getSiteList();
 for (let i in sitelist.sites) {
     console.log(sitelist.sites[i].url);
     weblist.innerHTML += `
-    <div class="entry" data-url="${sitelist.sites[i].url}">
+    <div class="entry">
         <h4>${sitelist.sites[i].url}</h4>
-        <button>&rarr;</button>
+        <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
     </div>
     `;
+}
+
+for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+
+    entry.addEventListener("click", function () {
+        goTo(entry.dataset.url);
+    });
 }

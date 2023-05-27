@@ -20,12 +20,14 @@ vr {
 }
 
 #viewer {
+    transform: translateX(300px);
     position: fixed;
     width: 100%;
     height: 100%;
     background: green;
     top: 0px;
     left: 0px;
+    transition: 300ms ease-in-out;
 }
 
 #header {
