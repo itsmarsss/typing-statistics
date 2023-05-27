@@ -19,6 +19,7 @@
 */
 
 const weblist = document.getElementById("web-list");
+const entries = document.getElementsByClassName("entry");
 
 function getSiteList() {
     return new Promise((resolve, reject) => {
@@ -37,6 +38,14 @@ function getSiteList() {
 
 function goTo(site) {
 
+}
+
+for (let i = 0; i < entries.length; i++) {
+    const entry = elements[i];
+
+    entry.addEventListener("click", function () {
+        goTo(entry.dataset.url);
+    });
 }
 
 const sitelist = await getSiteList();
