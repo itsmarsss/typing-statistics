@@ -45,7 +45,7 @@ async function updateSiteList() {
         }
 
         if (!siteExists) {
-            sitelist.sites.push({ url: currentSite, chars: 0, wpm: 0 });
+            sitelist.sites.push({ url: currentSite });
         }
 
         await setSiteList(sitelist);
@@ -57,7 +57,7 @@ async function updateSiteList() {
 }
 
 function getCurrentSite() {
-    return window.location.origin;
+    return window.location.hostname;
 }
 
 function getTypeData(site) {
