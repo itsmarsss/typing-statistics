@@ -5,6 +5,88 @@ html {
     height: 300px;
 }
 
+vr {
+    border-left: 1px solid #00000088;
+    height: 100%;
+}
+
 .title {
     font-family: 'Poppins';
+}
+
+#viewer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: green;
+    top: 0px;
+    left: 0px;
+}
+
+#header {
+    background: blue;
+    display: flex;
+}
+
+#title {
+    margin: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+#body {
+    background: orange;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-content: center;
+}
+
+.body-component {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+}
+
+.bottom {
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.key {
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.special {
+    background-color: lightblue;
+    color: white;
 }
