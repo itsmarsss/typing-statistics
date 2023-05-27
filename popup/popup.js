@@ -20,19 +20,18 @@
 
 const weblist = document.getElementById("web-list");
 
-var typedata;
+function getSiteList() {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get(["sitelist"], (result) => {
+            console.log("SiteList queried");
 
-function getTypeData() {
-    chrome.storage.local.get(["typedata"], function (result) {
-        console.log("TypeData queried");
-        typedata = JSON.parse(result.typedata);
-        console.log(typedata);
-    });
-}
+            const sitelist = JSON.parse(result.sitelist || '{"sites": []}');
 
-function setTypeData() {
-    chrome.storage.local.set({ typedata: JSON.stringify(typedata) }, function () {
-        console.log("TypeData setted");
+            console.log("Before");
+            console.log(sitelist);
+
+            resolve(sitelist);
+        });
     });
 }
 
@@ -40,13 +39,13 @@ function goTo(site) {
 
 }
 
-getTypeData();
+const sitelist = await getSiteList();
 
-for (let i in typedata.sites) {
-    console.log(typedata.sites[i]);
+for (let i in sitelist.sites) {
+    console.log(sitelist.sites[i].url);
     weblist.innerHTML += `
-    <div class="entry" onclick="goTo(${typedata.sites[i]})">
-        <h4>${typedata.sites[i]}</h4>
+    <div class="entry" data-url="${sitelist.sites[i].url}">
+        <h4>${sitelist.sites[i].url}</h4>
         <button>&rarr;</button>
     </div>
     `;
