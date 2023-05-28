@@ -67,17 +67,17 @@ vr {
     border: none;
     color: #fff;
     background: transparent;
-    transform: translateX(10px);
+    transform: translateX(5px);
     transition: 200ms;
     cursor: pointer;
 }
 
 #back:hover {
-    transform: translateX(5px);
+    transform: translateX(0px);
 }
 
 #title {
-    margin: 5px;
+    margin: 9px;
     text-align: center;
     transition: 250ms linear;
 }
@@ -87,6 +87,8 @@ vr {
 }
 
 .title-cont {
+    margin-left: 10px;
+    margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
     overflow: hidden;
@@ -171,7 +173,7 @@ vr {
 }
 
 .stats {
-    background: #000;
+    background: #272b2c;
     width: 100%;
     height: 45px;
     display: flex;
@@ -180,11 +182,14 @@ vr {
 .stats-cont {
     width: 50%;
     display: flex;
-    padding-top: 5px;
     flex-direction: column;
 }
 
 .stats-value {
     text-align: center;
-    margin: 0;
+    margin: 2px;
+}
+
+.stats-value.bottom {
+    color: #71D4FE;
 }
