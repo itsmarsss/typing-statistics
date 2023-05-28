@@ -193,13 +193,14 @@ back.addEventListener("click", function () {
 morestats.addEventListener("click", function () {
     moreinfo.style.transform = "translateY(0px)";
 
+    jsonlist.innerHTML = "";
+
     for (var jsonkey of Object.keys(tabdata)) {
         console.log(jsonkey + " -> " + tabdata[jsonkey]);
-        jsonlist.innerHTML = "";
         jsonlist.innerHTML += `
         <div class="list-entry">
-            <h4 class="jsonkey">${jsonkey}</h4>
-            <h4 class="jsonvalue">${tabdata[jsonkey]}</h4>
+            <h4 class="jsonkey jsonpart">${jsonkey}</h4>
+            <h4 class="jsonvalue jsonpart">${tabdata[jsonkey]}</h4>
         </div>
         `;
     }

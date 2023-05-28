@@ -41,15 +41,18 @@ button:hover {
     margin-left: 20px;
 }
 
-#web-list::-webkit-scrollbar {
+#web-list::-webkit-scrollbar,
+#json-list::-webkit-scrollbar {
     width: 12px;
 }
 
-#web-list::-webkit-scrollbar-track {
+#web-list::-webkit-scrollbar-track,
+#json-list::-webkit-scrollbar-track {
     background: #272b2c;
 }
 
-#web-list::-webkit-scrollbar-thumb {
+#web-list::-webkit-scrollbar-thumb,
+#json-list::-webkit-scrollbar-thumb {
     background-color: #708090;
     border-radius: 20px;
     border: 3.5px solid #272b2c;
@@ -307,7 +310,7 @@ button:hover {
 }
 
 #more-info {
-    background: yellowgreen;
+    background: #272b2c;
     width: 100%;
     height: 335px;
     bottom: 0;
@@ -340,4 +343,26 @@ button:hover {
 
 #more-back:hover {
     transform: translateY(0px);
+}
+
+#json-list {
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.list-entry {
+    display: flex;
+    justify-content: space-between;
+}
+
+.jsonpart {
+    margin: 0;
+}
+
+.jsonkey {
+    color: #71d4fe;
+}
+
+.jsonvalue {
+    color: #fff;
 }
