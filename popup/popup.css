@@ -342,12 +342,12 @@ button:hover {
     transition: 200ms ease-in-out;
 }
 
-#more-header {
+.more-header {
     display: flex;
     padding-top: 5px;
 }
 
-#more-header>h3 {
+.more-header>h3 {
     float: left;
     width: 190;
     margin: 0;
@@ -357,7 +357,7 @@ button:hover {
     font-family: "Poppins";
 }
 
-#more-back {
+.more-back {
     font-family: "Poppins";
 }
 
@@ -383,4 +383,17 @@ button:hover {
 .jsonvalue {
     color: #fff;
     overflow-x: hidden;
+}
+
+#typers {
+    background: #272b2c;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-300px);
+    transition: 200ms ease-in-out;
 }

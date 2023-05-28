@@ -51,6 +51,12 @@ const moreback = document.getElementById("more-back");
 const jsonlist = document.getElementById("json-list");
 
 
+
+const typers = document.getElementById("typers");
+const typersback = document.getElementById("typers-back");
+
+
+
 function getSiteList() {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get(["sitelist"], (result) => {
@@ -280,6 +286,13 @@ moreback.addEventListener("click", function () {
     moreinfo.style.transform = "translateY(500px)";
 });
 
+autotypers.addEventListener("click", function () {
+    typers.style.transform = "translateX(0px)";
+});
+
+typersback.addEventListener("click", function () {
+    typers.style.transform = "translateX(-300px)";
+});
 
 const sitelist = await getSiteList();
 
