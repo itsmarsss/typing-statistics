@@ -2,51 +2,44 @@ var tabdata = {};
 var last_space = -1;
 var length = 0;
 
-window.addEventListener("keypress", function (event) {
-    const key = event.key;
-    updateTabData(key);
-    updateSiteList();
-});
+async function updateTabData(key) {
+    await getTypeData(getCurrentSite());
 
-function updateTabData(key) {
-    getTypeData(getCurrentSite())
-        .then(() => {
-            if (!(key in tabdata)) {
-                tabdata[key] = 0;
+    if (!(key in tabdata)) {
+        tabdata[key] = 0;
+    }
+    tabdata[key] += 1;
+
+    if (!("chars" in tabdata)) {
+        tabdata["chars"] = 0;
+    }
+    tabdata.chars += 1;
+
+    length += 1;
+
+    if (key === " ") {
+        if ((last_space === -1) || (Date.now() - last_space > 5000)) {
+            last_space = Date.now();
+        } else {
+            if (!("words" in tabdata)) {
+                tabdata["words"] = 0;
             }
-            tabdata[key] += 1;
+            tabdata.words += 1;
 
-            if (!("chars" in tabdata)) {
-                tabdata["chars"] = 0;
+            if (!("avgtime" in tabdata)) {
+                tabdata["avgtime"] = Date.now() - last_space;
+            } else {
+                tabdata.avgtime = ((tabdata.avgtime * (tabdata.words - 1) + (Date.now() - last_space)) / tabdata.words);
             }
-            tabdata.chars += 1;
+            console.log(Date.now() - last_space);
 
-            length += 1;
+            length = 0;
+            last_space = Date.now();
 
-            if (key === " ") {
-                if ((last_space === -1) || (Date.now() - last_space > 5000)) {
-                    last_space = Date.now();
-                } else {
-                    if (!("words" in tabdata)) {
-                        tabdata["words"] = 0;
-                    }
-                    tabdata.words += 1;
+        }
+    }
 
-                    if (!("avgtime" in tabdata)) {
-                        tabdata["avgtime"] = Date.now() - last_space;
-                    } else {
-                        tabdata.avgtime = ((tabdata.avgtime * (tabdata.words - 1) + (Date.now() - last_space)) / tabdata.words);
-                    }
-
-                    last_space = Date.now();
-                }
-            }
-
-            setTypeData(getCurrentSite());
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+    await setTypeData(getCurrentSite());
 }
 
 async function updateSiteList() {
@@ -142,6 +135,15 @@ function setSiteList(sitelist) {
         });
     });
 }
+
+const inputFields = document.querySelectorAll("input, textarea");
+inputFields.forEach(function (input) {
+    input.addEventListener("keydown", function (event) {
+        const key = event.key;
+        updateTabData(key);
+        updateSiteList();
+    });
+});
 
 console.log("Typing Statistics - Connected");
 
