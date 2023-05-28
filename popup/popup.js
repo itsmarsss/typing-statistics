@@ -32,6 +32,12 @@ const leftmain = document.getElementById("left-main");
 const centermain = document.getElementById("center-main");
 const rightmain = document.getElementById("right-main");
 
+
+
+const key = document.getElementById("key");
+const count = document.getElementById("count");
+
+
 function getSiteList() {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get(["sitelist"], (result) => {
@@ -87,48 +93,72 @@ async function goTo(site) {
 }
 
 function assignGrade(wpm) {
-    if (wpm >= 100) {
+    if (wpm >= 125) {
         return 'SSS+';
-    } else if (wpm >= 95) {
+    } else if (wpm >= 120) {
         return 'SSS';
-    } else if (wpm >= 90) {
+    } else if (wpm >= 115) {
         return 'SSS-';
-    } else if (wpm >= 85) {
+    } else if (wpm >= 110) {
         return 'SS+';
-    } else if (wpm >= 80) {
+    } else if (wpm >= 105) {
         return 'SS';
-    } else if (wpm >= 75) {
+    } else if (wpm >= 100) {
         return 'SS-';
-    } else if (wpm >= 70) {
+    } else if (wpm >= 95) {
         return 'S+';
-    } else if (wpm >= 65) {
+    } else if (wpm >= 90) {
         return 'S';
-    } else if (wpm >= 60) {
+    } else if (wpm >= 85) {
         return 'S-';
-    } else if (wpm >= 55) {
+    } else if (wpm >= 80) {
         return 'A+';
-    } else if (wpm >= 50) {
+    } else if (wpm >= 75) {
         return 'A';
-    } else if (wpm >= 45) {
+    } else if (wpm >= 70) {
         return 'A-';
-    } else if (wpm >= 40) {
+    } else if (wpm >= 65) {
         return 'B+';
-    } else if (wpm >= 35) {
+    } else if (wpm >= 60) {
         return 'B';
-    } else if (wpm >= 30) {
+    } else if (wpm >= 55) {
         return 'B-';
-    } else if (wpm >= 25) {
+    } else if (wpm >= 50) {
         return 'C+';
-    } else if (wpm >= 20) {
+    } else if (wpm >= 45) {
         return 'C';
-    } else if (wpm >= 15) {
+    } else if (wpm >= 40) {
         return 'C-';
-    } else if (wpm >= 10) {
+    } else if (wpm >= 35) {
         return 'D+';
-    } else {
+    } else if (wpm >= 30) {
         return 'D';
+    } else if (wpm >= 25) {
+        return 'D-';
+    } else {
+        return 'F';
     }
 }
+
+function getFreq(key) {
+    return tabdata[key];
+}
+
+document.querySelectorAll(".key").forEach(function (keyb) {
+    keyb.addEventListener('mouseover', function () {
+        key.style.transform = "translateY(-5px)";
+        setTimeout(function () {
+            key.innerHTML = keyb.innerHTML;
+            key.style.transform = "translateY(0px)";
+        }, 100);
+
+        count.style.transform = "translateY(-5px)";
+        setTimeout(function () {
+            count.innerHTML = getFreq(keyb.innerHTML.toLowerCase()) || 0;
+            count.style.transform = "translateY(0px)";
+        }, 100);
+    });
+});
 
 back.addEventListener("click", function () {
     viewer.style.transform = "translateX(300px)";

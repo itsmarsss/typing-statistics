@@ -188,6 +188,7 @@ vr {
 .stats-value {
     text-align: center;
     margin: 2px;
+    transition: 100ms;
 }
 
 .stats-value.bottom {
