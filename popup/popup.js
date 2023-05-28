@@ -18,6 +18,12 @@
 }
 */
 
+
+const summary = document.getElementById("summary");
+const autotypers = document.getElementById("autotypers");
+
+
+
 const weblist = document.getElementById("web-list");
 const entries = document.getElementsByClassName("entry-btn");
 
@@ -43,7 +49,6 @@ const moreinfo = document.getElementById("more-info");
 const morestats = document.getElementById("more-stats");
 const moreback = document.getElementById("more-back");
 const jsonlist = document.getElementById("json-list");
-
 
 
 function getSiteList() {
@@ -76,6 +81,23 @@ function getTypeData(site) {
                 console.log(tabdata);
 
                 resolve();
+            }
+        });
+    });
+}
+
+function getSpecialTypeData(site) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get(site, (result) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            } else {
+                console.log(`TabData for "${site}" queried as special`);
+
+                var temptabdata = JSON.parse(result[site] || "{}");
+                temptabdata["site"] = site;
+
+                resolve(temptabdata);
             }
         });
     });
@@ -153,6 +175,42 @@ function getFreq(key) {
     return tabdata[key];
 }
 
+summary.addEventListener("click", async function () {
+    console.log("View all");
+
+    title.innerHTML = "Summary";
+
+    const sitelist = await getSiteList();
+
+    for (let i in sitelist.sites) {
+        console.log(sitelist.sites[i].url);
+
+        const temptabdata = await getSpecialTypeData(sitelist.sites[i].url)
+            .catch((error) => {
+                console.error(error);
+            });
+
+        for (var jsonkey of Object.keys(temptabdata)) {
+            console.log(jsonkey + " -> " + temptabdata[jsonkey]);
+            if ((jsonkey != "site") && (jsonkey != "fullurl")) {
+                if (!(jsonkey in tabdata)) {
+                    tabdata[jsonkey] = 0;
+                }
+                tabdata[jsonkey] += Number(temptabdata[jsonkey]);
+            } else {
+                tabdata[jsonkey] = "N/A";
+            }
+        }
+
+        leftmain.innerHTML += temptabdata.chars || 0;
+        rightmain.innerHTML = (Math.round(((60000 / (((temptabdata.avgtime || 0) + rightmain.innerHTML) / 2)) + Number.EPSILON) * 100) / 100);
+    }
+
+    centermain.innerHTML = assignGrade(rightmain.innerHTML);
+
+    viewer.style.transform = "translateX(0px)";
+});
+
 const title_cont = document.getElementsByClassName("title-cont")[0];
 title_cont.addEventListener('mouseenter', () => {
     let textWidth = title.clientWidth;
@@ -197,15 +255,13 @@ morestats.addEventListener("click", function () {
     jsonlist.innerHTML = "";
 
     for (var jsonkey of Object.keys(tabdata)) {
-        console.log(jsonkey + " -> " + tabdata[jsonkey]);
         jsonlist.innerHTML += `
-        <div class="list-entry">
-            <h4 class="jsonkey jsonpart">${jsonkey}</h4>
-            <h4 class="jsonvalue jsonpart">${tabdata[jsonkey]}</h4>
-        </div>
-        `;
+<div class="list-entry">
+    <h4 class="jsonkey jsonpart">${jsonkey}</h4>
+    <h4 class="jsonvalue jsonpart">${tabdata[jsonkey]}</h4>
+</div>
+                `;
     }
-
 });
 
 moreback.addEventListener("click", function () {
