@@ -47,7 +47,7 @@ async function updateTabData(key) {
 
 async function updateSiteList() {
     try {
-        const sitelist = await getSiteList();
+        var sitelist = await getSiteList();
         const currentSite = getCurrentSite();
 
         if (!sitelist || !sitelist.sites || !Array.isArray(sitelist.sites)) {
@@ -91,7 +91,7 @@ function getTypeData(site) {
                 console.log(`TabData for "${site}" queried`);
 
                 tabdata = JSON.parse(result[site] || "{}");
-                tabdata.site = site;
+                tabdata[site] = site;
 
                 console.log("Before");
                 console.log(tabdata);

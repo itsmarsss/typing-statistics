@@ -35,6 +35,12 @@ button:hover {
     transform: translateX(0px);
 }
 
+#nodata {
+    color: #fff;
+    margin-bottom: 255px;
+    margin-left: 20px;
+}
+
 #web-list::-webkit-scrollbar {
     width: 12px;
 }
@@ -58,9 +64,10 @@ button:hover {
 
 .entry {
     padding-top: 5px;
-    width: 100%;
+    width: 235px;
     height: 25px;
     margin-bottom: 10px;
+    margin-right: 10px;
     border-bottom: 2px solid #aaccf4;
     background: #4d5256;
     border-radius: 5px;

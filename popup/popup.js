@@ -62,7 +62,7 @@ function getTypeData(site) {
                 console.log(`TabData for "${site}" queried`);
 
                 tabdata = JSON.parse(result[site] || "{}");
-                tabdata.site = site;
+                tabdata[site] = site;
 
                 console.log("Before");
                 console.log(tabdata);
@@ -144,6 +144,32 @@ function getFreq(key) {
     return tabdata[key];
 }
 
+function setSiteList(sitelist) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, () => {
+            console.log("SiteList set");
+
+            console.log("After");
+            console.log(sitelist);
+
+            resolve();
+        });
+    });
+}
+
+function setTypeData(site) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.set({ [site]: JSON.stringify(tabdata) }, () => {
+            console.log(`TypeData for "${site}" set`);
+
+            console.log("After");
+            console.log(tabdata);
+
+            resolve();
+        });
+    });
+}
+
 document.querySelectorAll(".key").forEach(function (keyb) {
     keyb.addEventListener('mouseover', function () {
         key.style.transform = "translateY(-5px)";
@@ -166,17 +192,19 @@ back.addEventListener("click", function () {
 
 const sitelist = await getSiteList();
 
-for (let i in sitelist.sites) {
-    console.log(sitelist.sites[i].url);
+try {
+    weblist.innerHTML = "";
+    for (let i in sitelist.sites) {
+        console.log(sitelist.sites[i].url);
 
-    await getTypeData(sitelist.sites[i].url)
-        .catch((error) => {
-            console.error(error);
-        });
+        await getTypeData(sitelist.sites[i].url)
+            .catch((error) => {
+                console.error(error);
+            });
 
-    const imgurl = `https://www.google.com/s2/favicons?domain=${sitelist.sites[i].url}&sz=12`;
+        const imgurl = `https://www.google.com/s2/favicons?domain=${sitelist.sites[i].url}&sz=12`;
 
-    weblist.innerHTML += `
+        weblist.innerHTML += `
     <div class="entry">
         <a href="${tabdata.fullurl}" target="_blank">
             <img class="site-icon" src="${imgurl}">
@@ -185,6 +213,10 @@ for (let i in sitelist.sites) {
         <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
     </div >
         `;
+    }
+} catch (err) {
+    weblist.innerHTML = '<h3 id="nodata">No Data.</h3>';
+    console.error(err);
 }
 
 for (let i = 0; i < entries.length; i++) {
