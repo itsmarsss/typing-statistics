@@ -180,7 +180,11 @@ document.querySelectorAll(".key").forEach(function (keyb) {
 
         count.style.transform = "translateY(-5px)";
         setTimeout(function () {
-            count.innerHTML = getFreq(keyb.innerHTML.toLowerCase()) || 0;
+            if (keyb.innerHTML === "Space") {
+                count.innerHTML = getFreq(" ") || 0;
+            } else {
+                count.innerHTML = getFreq(keyb.innerHTML.toLowerCase()) || 0;
+            }
             count.style.transform = "translateY(0px)";
         }, 100);
     });
@@ -210,13 +214,13 @@ try {
         const imgurl = `https://www.google.com/s2/favicons?domain=${sitelist.sites[i].url}&sz=12`;
 
         weblist.innerHTML += `
-    <div class="entry">
-        <a href="${tabdata.fullurl}" target="_blank">
-            <img class="site-icon" src="${imgurl}">
-            <h4>${sitelist.sites[i].url}</h4>
-        </a>
-        <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
-    </div >
+<div class="entry">
+    <a href="${tabdata.fullurl}" target="_blank">
+        <img class="site-icon" src="${imgurl}">
+        <h4>${sitelist.sites[i].url}</h4>
+    </a>
+    <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
+</div>
         `;
     }
 } catch (err) {

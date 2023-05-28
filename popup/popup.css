@@ -227,6 +227,22 @@ button:hover {
     border: 1px solid #eee;
 }
 
+.small {
+    width: 35px;
+}
+
+.small:hover {
+    width: 34px;
+}
+
+.medium {
+    width: 50px;
+}
+
+.medium:hover {
+    width: 49px;
+}
+
 .long {
     width: 75px;
 }
