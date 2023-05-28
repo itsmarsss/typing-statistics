@@ -5,6 +5,10 @@ var length = 0;
 async function updateTabData(key) {
     await getTypeData(getCurrentSite());
 
+    if (!(fullurl in tabdata)) {
+        tabdata[fullurl] = getFullCurrentSite();
+    }
+
     if (!(key in tabdata)) {
         tabdata[key] = 0;
     }
@@ -35,7 +39,6 @@ async function updateTabData(key) {
 
             length = 0;
             last_space = Date.now();
-
         }
     }
 
@@ -73,6 +76,10 @@ async function updateSiteList() {
 
 function getCurrentSite() {
     return window.location.hostname;
+}
+
+function getFullCurrentSite() {
+    return window.location.origin;
 }
 
 function getTypeData(site) {

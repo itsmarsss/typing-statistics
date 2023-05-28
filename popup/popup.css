@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding-left: 5px;
     padding-top: 5px;
+    background: #272b2c;
 }
 
 vr {
@@ -20,6 +21,20 @@ vr {
     height: 100%;
 }
 
+button {
+    outline: none;
+    border: none;
+    color: #fff;
+    background: transparent;
+    transform: translateX(5px);
+    transition: 200ms;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: translateX(0px);
+}
+
 #web-list {
     margin-top: 10px;
     width: 100%;
@@ -27,12 +42,31 @@ vr {
     overflow-y: auto;
 }
 
-.entry>h4 {
+.entry {
+    border-bottom: #aaccf4;
+    width: 100%;
+    height: 20px;
+    border-bottom: #4e50583e;
+}
+
+.entry>a {
+    text-decoration: none;
+    color: #fff;
     width: 190px;
     margin: 0;
+    padding: 0;
     overflow: hidden;
     float: left;
-    margin-bottom: 10px;
+    transition: 200ms;
+}
+
+.entry>a>h4 {
+    margin: 0;
+}
+
+.entry>a:hover {
+    color: #71D4FE;
+    cursor: pointer;
 }
 
 .entry-btn {
@@ -42,7 +76,10 @@ vr {
 }
 
 .title {
+    font-size: 20px;
+    color: #fff;
     font-family: 'Poppins';
+    font-weight: bold;
 }
 
 #viewer {
@@ -59,20 +96,6 @@ vr {
     background: #2f3336;
     color: #fff;
     display: flex;
-}
-
-#back {
-    outline: none;
-    border: none;
-    color: #fff;
-    background: transparent;
-    transform: translateX(5px);
-    transition: 200ms;
-    cursor: pointer;
-}
-
-#back:hover {
-    transform: translateX(0px);
 }
 
 #title {

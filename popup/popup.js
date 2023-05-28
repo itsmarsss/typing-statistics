@@ -171,7 +171,7 @@ for (let i in sitelist.sites) {
 
     weblist.innerHTML += `
     <div class="entry">
-        <h4>${sitelist.sites[i].url}</h4>
+        <a href="${sitelist.sites[i].fullurl}"><h4>${sitelist.sites[i].url}</h4></a>
         <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
     </div>
     `;
