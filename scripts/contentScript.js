@@ -149,8 +149,6 @@ document.addEventListener('keydown', function (event) {
     updateSiteList();
 });
 
-addKeyListenerToElements(document.documentElement);
-
 console.log("Typing Statistics - Connected");
 
 getTypeData(getCurrentSite())
