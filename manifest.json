@@ -19,7 +19,10 @@
     "default_popup": "/popup/popup.html"
   },
   "permissions": [
-        "storage"
+        "scripting",
+        "activeTab",
+        "storage",
+        "tabs"
   ]
   // "icons": {
   //   "16": "assets/icon-16.png",
