@@ -78,12 +78,13 @@ var tabdata = {};
 async function goTo(site) {
     console.log("Go To " + site);
 
-    title.innerHTML = site;
 
     await getTypeData(site)
         .catch((error) => {
             console.error(error);
         });
+
+    title.innerHTML = tabdata.fullurl;
 
     leftmain.innerHTML = tabdata.chars || 0;
     rightmain.innerHTML = (Math.round(((60000 / tabdata.avgtime) + Number.EPSILON) * 100) / 100) || 0;

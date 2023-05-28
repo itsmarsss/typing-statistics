@@ -107,7 +107,7 @@ button:hover {
 }
 
 .entry>a:hover {
-    color: #71D4FE;
+    color: #71d4fe;
     cursor: pointer;
     transform: translateY(-2px);
 }
@@ -144,11 +144,11 @@ button:hover {
 #title {
     margin: 9px;
     text-align: center;
-    transition: 250ms linear;
+    transition: 500ms linear;
 }
 
 #title:hover {
-    transform: translateX(-250px);
+    transform: translateX(-350px);
 }
 
 .title-cont {
@@ -212,7 +212,7 @@ button:hover {
     font-size: 10px;
     width: 20px;
     height: 20px;
-    color: #71D4FE;
+    color: #71d4fe;
     background: #2f3336;
     display: flex;
     align-items: center;
@@ -272,7 +272,7 @@ button:hover {
 }
 
 .stats-value.bottom {
-    color: #71D4FE;
+    color: #71d4fe;
 }
 
 #footer {
