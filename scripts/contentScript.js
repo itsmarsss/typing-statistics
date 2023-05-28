@@ -136,14 +136,13 @@ function setSiteList(sitelist) {
     });
 }
 
-const inputFields = document.querySelectorAll("input, textarea");
-inputFields.forEach(function (input) {
-    input.addEventListener("keydown", function (event) {
-        const key = event.key;
-        updateTabData(key);
-        updateSiteList();
-    });
+document.addEventListener('keydown', function (event) {
+    const key = event.key;
+    updateTabData(key);
+    updateSiteList();
 });
+
+addKeyListenerToElements(document.documentElement);
 
 console.log("Typing Statistics - Connected");
 
