@@ -178,8 +178,10 @@ for (let i in sitelist.sites) {
 
     weblist.innerHTML += `
     <div class="entry">
-        <img class="site-icon" src="${imgurl}">
-        <a href="${tabdata.fullurl}" target="_blank"><h4>${sitelist.sites[i].url}</h4></a>
+        <a href="${tabdata.fullurl}" target="_blank">
+            <img class="site-icon" src="${imgurl}">
+            <h4>${sitelist.sites[i].url}</h4>
+        </a>
         <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
     </div >
         `;
