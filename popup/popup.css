@@ -305,3 +305,39 @@ button:hover {
 #more-stats:hover {
     margin-right: 5px;
 }
+
+#more-info {
+    background: yellowgreen;
+    width: 100%;
+    height: 335px;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(500px);
+    transition: 200ms ease-in-out;
+}
+
+#more-header {
+    display: flex;
+    padding-top: 5px;
+}
+
+#more-header>h3 {
+    float: left;
+    width: 230px;
+    margin: 0;
+    color: #aaccf4;
+    font-weight: bold;
+}
+
+#more-back {
+    transform: translateX(-5px);
+    transform: translateY(-5px);
+    float: right;
+}
+
+#more-back:hover {
+    transform: translateY(0px);
+}

@@ -38,6 +38,14 @@ const key = document.getElementById("key");
 const count = document.getElementById("count");
 
 
+
+const moreinfo = document.getElementById("more-info");
+const morestats = document.getElementById("more-stats");
+const moreback = document.getElementById("more-back");
+const jsonlist = document.getElementById("json-list");
+
+
+
 function getSiteList() {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get(["sitelist"], (result) => {
@@ -145,6 +153,19 @@ function getFreq(key) {
     return tabdata[key];
 }
 
+const title_cont = document.getElementsByClassName("title-cont")[0];
+title_cont.addEventListener('mouseenter', () => {
+    let textWidth = title.clientWidth;
+    let boxWidth = parseFloat(getComputedStyle(title_cont).width);
+    let translateVal = Math.min(boxWidth - textWidth, 0);
+    title.style.transitionDuration = "3s"//- 0.01 * translateVal + "s";
+    title.style.transform = "translateX(" + (translateVal - 10) + "px)";
+});
+title_cont.addEventListener('mouseleave', () => {
+    title.style.transitionDuration = "0.3s";
+    title.style.transform = "translateX(0)";
+});
+
 document.querySelectorAll(".key").forEach(function (keyb) {
     keyb.addEventListener('mouseover', function () {
         key.style.transform = "translateY(-5px)";
@@ -168,6 +189,27 @@ document.querySelectorAll(".key").forEach(function (keyb) {
 back.addEventListener("click", function () {
     viewer.style.transform = "translateX(300px)";
 });
+
+morestats.addEventListener("click", function () {
+    moreinfo.style.transform = "translateY(0px)";
+
+    for (var jsonkey of Object.keys(tabdata)) {
+        console.log(jsonkey + " -> " + tabdata[jsonkey]);
+        jsonlist.innerHTML = "";
+        jsonlist.innerHTML += `
+        <div class="list-entry">
+            <h4 class="jsonkey">${jsonkey}</h4>
+            <h4 class="jsonvalue">${tabdata[jsonkey]}</h4>
+        </div>
+        `;
+    }
+
+});
+
+moreback.addEventListener("click", function () {
+    moreinfo.style.transform = "translateY(500px)";
+});
+
 
 const sitelist = await getSiteList();
 
@@ -210,16 +252,3 @@ for (let i = 0; i < entries.length; i++) {
         goTo(entry.dataset.url);
     });
 }
-
-const title_cont = document.getElementsByClassName("title-cont")[0];
-title_cont.addEventListener('mouseenter', () => {
-    let textWidth = title.clientWidth;
-    let boxWidth = parseFloat(getComputedStyle(title_cont).width);
-    let translateVal = Math.min(boxWidth - textWidth, 0);
-    title.style.transitionDuration = "3s"//- 0.01 * translateVal + "s";
-    title.style.transform = "translateX(" + (translateVal - 10) + "px)";
-});
-title_cont.addEventListener('mouseleave', () => {
-    title.style.transitionDuration = "0.3s";
-    title.style.transform = "translateX(0)";
-});

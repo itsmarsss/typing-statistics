@@ -91,7 +91,7 @@ function getTypeData(site) {
                 console.log(`TabData for "${site}" queried`);
 
                 tabdata = JSON.parse(result[site] || "{}");
-                tabdata[site] = site;
+                tabdata["site"] = site;
 
                 console.log("Before");
                 console.log(tabdata);
