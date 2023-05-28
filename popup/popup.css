@@ -156,9 +156,8 @@ button:hover {
 #body {
     background: #272b2c;
     width: 100%;
-    height: 25%;
+    height: 85px;
     display: flex;
-    align-content: center;
 }
 
 .body-component {
@@ -184,7 +183,7 @@ button:hover {
     font-weight: bold;
 }
 
-#footer {
+#main-body {
     height: 165px;
 }
 
@@ -251,4 +250,37 @@ button:hover {
 
 .stats-value.bottom {
     color: #71D4FE;
+}
+
+#footer {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    padding-bottom: 3px;
+    position: absolute;
+    width: 100%;
+    background: #2f3336;
+}
+
+#footer>span {
+    color: #fff;
+    cursor: pointer;
+}
+
+#more-stats {
+    margin: 0;
+    width: 110px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    transition: 200ms;
+}
+
+#more-stats>span {
+    transition: 200ms;
+}
+
+#more-stats:hover {
+    margin-right: 5px;
 }
