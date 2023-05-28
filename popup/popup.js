@@ -178,9 +178,13 @@ function getFreq(key) {
 summary.addEventListener("click", async function () {
     console.log("View all");
 
+    tabdata = {};
+
     title.innerHTML = "Summary";
 
     const sitelist = await getSiteList();
+
+    var cumulativeWPM = 0;
 
     for (let i in sitelist.sites) {
         console.log(sitelist.sites[i].url);
@@ -191,7 +195,6 @@ summary.addEventListener("click", async function () {
             });
 
         for (var jsonkey of Object.keys(temptabdata)) {
-            console.log(jsonkey + " -> " + temptabdata[jsonkey]);
             if ((jsonkey != "site") && (jsonkey != "fullurl")) {
                 if (!(jsonkey in tabdata)) {
                     tabdata[jsonkey] = 0;
@@ -202,12 +205,7 @@ summary.addEventListener("click", async function () {
             }
         }
 
-        leftmain.innerHTML = Number(leftmain.innerHTML) + Number(temptabdata.chars || 0);
-        if (i === 0) {
-            rightmain.innerHTML = (60000 / temptabdata.avgtime) || 0;
-        } else {
-            rightmain.innerHTML = ((60000 / temptabdata.avgtime) || 0) + Number(rightmain.innerHTML);
-        }
+        cumulativeWPM += (Math.round(((60000 / (temptabdata.avgtime)) + Number.EPSILON) * 100) / 100) || 0
     }
 
     if (!("avgtime" in tabdata)) {
@@ -216,7 +214,8 @@ summary.addEventListener("click", async function () {
     tabdata["avgtime"] = tabdata["avgtime"] / sitelist.sites.length;
     tabdata["avgtime"] = (Math.round(((tabdata["avgtime"]) + Number.EPSILON) * 100) / 100) || 0;
 
-    rightmain.innerHTML = Number(rightmain.innerHTML) / sitelist.sites.length;
+    leftmain.innerHTML = tabdata.chars;
+    rightmain.innerHTML = cumulativeWPM / sitelist.sites.length;
     rightmain.innerHTML = (Math.round(((Number(rightmain.innerHTML)) + Number.EPSILON) * 100) / 100) || 0;
 
     centermain.innerHTML = assignGrade(rightmain.innerHTML);
@@ -229,7 +228,7 @@ title_cont.addEventListener('mouseenter', () => {
     let textWidth = title.clientWidth;
     let boxWidth = parseFloat(getComputedStyle(title_cont).width);
     let translateVal = Math.min(boxWidth - textWidth, 0);
-    title.style.transitionDuration = "3s"//- 0.01 * translateVal + "s";
+    title.style.transitionDuration = "3s";
     title.style.transform = "translateX(" + (translateVal - 10) + "px)";
 });
 title_cont.addEventListener('mouseleave', () => {
