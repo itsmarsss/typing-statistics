@@ -5,8 +5,8 @@ var length = 0;
 async function updateTabData(key) {
     await getTypeData(getCurrentSite());
 
-    if (!(fullurl in tabdata)) {
-        tabdata[fullurl] = getFullCurrentSite();
+    if (!("fullurl" in tabdata)) {
+        tabdata["fullurl"] = getFullCurrentSite();
     }
 
     if (!(key in tabdata)) {

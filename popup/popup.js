@@ -169,9 +169,14 @@ const sitelist = await getSiteList();
 for (let i in sitelist.sites) {
     console.log(sitelist.sites[i].url);
 
+    await getTypeData(sitelist.sites[i].url)
+        .catch((error) => {
+            console.error(error);
+        });
+
     weblist.innerHTML += `
     <div class="entry">
-        <a href="${sitelist.sites[i].fullurl}"><h4>${sitelist.sites[i].url}</h4></a>
+        <a href="${tabdata.fullurl}" target="_blank"><h4>${sitelist.sites[i].url}</h4></a>
         <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
     </div>
     `;
