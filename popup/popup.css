@@ -58,14 +58,39 @@ vr {
 
 #header {
     background: #2f3336;
-    box-shadow: green 0px 8px 24px;
+    color: #fff;
     display: flex;
+}
+
+#back {
+    outline: none;
+    border: none;
+    color: #fff;
+    background: transparent;
+    transform: translateX(10px);
+    transition: 200ms;
+    cursor: pointer;
+}
+
+#back:hover {
+    transform: translateX(5px);
 }
 
 #title {
     margin: 5px;
-    width: 100%;
     text-align: center;
+    transition: 250ms linear;
+}
+
+#title:hover {
+    transform: translateX(-250px);
+}
+
+.title-cont {
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: hidden;
+    width: 100%;
 }
 
 #body {
