@@ -137,7 +137,7 @@ function setSiteList(sitelist) {
 }
 
 document.addEventListener('keydown', function (event) {
-    const key = event.key;
+    const key = event.key.toLowerCase();
     updateTabData(key);
     updateSiteList();
 });
