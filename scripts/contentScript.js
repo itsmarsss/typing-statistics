@@ -37,6 +37,8 @@ function updateTabData(key) {
                     } else {
                         tabdata.avgtime = ((tabdata.avgtime * (tabdata.words - 1) + (Date.now() - last_space)) / tabdata.words);
                     }
+
+                    last_space = Date.now();
                 }
             }
 
