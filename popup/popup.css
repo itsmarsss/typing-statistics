@@ -403,6 +403,7 @@ button:hover {
     display: flex;
     background: #708090;
     height: 20px;
+    margin-bottom: 30px;
     box-shadow: #6b9ccd66 0px 5px,
         #6b9ccd4d 0px 10px,
         #6b9ccd33 0px 15px,
@@ -413,13 +414,19 @@ button:hover {
 .typer-target {
     margin: 0;
     text-decoration: none;
+    transition: 200ms;
+}
+
+.typer-target:hover {
+    color: #2ba8fb;
+    transform: translateY(-2px);
 }
 
 .typer-name {
     font-family: "Poppins";
     color: #fff;
     margin: 0;
-    margin-right: 100px;
+    width: 185px;
 }
 
 .start {

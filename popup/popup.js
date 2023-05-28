@@ -181,6 +181,12 @@ function getFreq(key) {
     return tabdata[key];
 }
 
+async function getCurrentTab() {
+    let queryOptions = { active: true, lastFocusedWindow: true };
+    let [tab] = await chrome.tabs.query(queryOptions);
+    return tab;
+}
+
 summary.addEventListener("click", async function () {
     console.log("View all");
 
@@ -335,3 +341,11 @@ for (let i = 0; i < entries.length; i++) {
         goTo(entry.dataset.url);
     });
 }
+getCurrentTab().then((tab) => {
+    const { id, url } = tab;
+    chrome.scripting.executeScript(
+        {
+            target: { tabId: id, allFrames: true },
+            files: ['/autotypers/typings.js']
+        });
+});
