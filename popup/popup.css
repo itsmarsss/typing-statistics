@@ -306,6 +306,7 @@ button:hover {
 }
 
 #more-stats:hover {
+    margin-left: 5px;
     margin-right: 5px;
 }
 
@@ -329,20 +330,11 @@ button:hover {
 
 #more-header>h3 {
     float: left;
-    width: 230px;
+    width: 190;
     margin: 0;
     color: #aaccf4;
     font-weight: bold;
-}
-
-#more-back {
-    transform: translateX(-5px);
-    transform: translateY(-5px);
-    float: right;
-}
-
-#more-back:hover {
-    transform: translateY(0px);
+    margin-left: 5px
 }
 
 #json-list {
@@ -365,4 +357,5 @@ button:hover {
 
 .jsonvalue {
     color: #fff;
+    overflow-x: hidden;
 }
