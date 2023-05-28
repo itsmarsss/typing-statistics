@@ -117,7 +117,7 @@ async function goTo(site) {
     title.innerHTML = tabdata.fullurl;
 
     leftmain.innerHTML = tabdata.chars || 0;
-    rightmain.innerHTML = (Math.round(((60000 / tabdata.avgtime) + Number.EPSILON) * 100) / 100) || 0;
+    rightmain.innerHTML = (Math.round(((60000 / (tabdata.avgtime)) + Number.EPSILON) * 100) / 100) || 0;
     centermain.innerHTML = assignGrade(rightmain.innerHTML);
 
     viewer.style.transform = "translateX(0px)";
@@ -202,9 +202,22 @@ summary.addEventListener("click", async function () {
             }
         }
 
-        leftmain.innerHTML += temptabdata.chars || 0;
-        rightmain.innerHTML = (Math.round(((60000 / (((temptabdata.avgtime || 0) + rightmain.innerHTML) / 2)) + Number.EPSILON) * 100) / 100);
+        leftmain.innerHTML = Number(leftmain.innerHTML) + Number(temptabdata.chars || 0);
+        if (i === 0) {
+            rightmain.innerHTML = (60000 / temptabdata.avgtime) || 0;
+        } else {
+            rightmain.innerHTML = ((60000 / temptabdata.avgtime) || 0) + Number(rightmain.innerHTML);
+        }
     }
+
+    if (!("avgtime" in tabdata)) {
+        tabdata["avgtime"] = 0;
+    }
+    tabdata["avgtime"] = tabdata["avgtime"] / sitelist.sites.length;
+    tabdata["avgtime"] = (Math.round(((tabdata["avgtime"]) + Number.EPSILON) * 100) / 100) || 0;
+
+    rightmain.innerHTML = Number(rightmain.innerHTML) / sitelist.sites.length;
+    rightmain.innerHTML = (Math.round(((Number(rightmain.innerHTML)) + Number.EPSILON) * 100) / 100) || 0;
 
     centermain.innerHTML = assignGrade(rightmain.innerHTML);
 
@@ -257,10 +270,10 @@ morestats.addEventListener("click", function () {
     for (var jsonkey of Object.keys(tabdata)) {
         jsonlist.innerHTML += `
 <div class="list-entry">
-    <h4 class="jsonkey jsonpart">${jsonkey}</h4>
+    <h4 class="jsonkey jsonpart">${jsonkey.replace(" ", "Space")}</h4>
     <h4 class="jsonvalue jsonpart">${tabdata[jsonkey]}</h4>
 </div>
-                `;
+        `;
     }
 });
 
