@@ -236,3 +236,16 @@ for (let i = 0; i < entries.length; i++) {
         goTo(entry.dataset.url);
     });
 }
+
+const title_cont = document.querySelector(".title-cont");
+title_cont.addEventListener('mouseenter', () => {
+    let textWidth = title.clientWidth;
+    let boxWidth = parseFloat(getComputedStyle(title_cont).width);
+    let translateVal = Math.min(boxWidth - textWidth, 0);
+    title.style.transitionDuration = - 0.01 * translateVal + "s";
+    title.style.transform = "translateX(" + (translateVal - 10) + "px)";
+});
+title_cont.addEventListener('mouseleave', () => {
+    title.style.transitionDuration = "0.3s";
+    title.style.transform = "translateX(0)";
+});
