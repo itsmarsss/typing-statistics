@@ -237,12 +237,12 @@ for (let i = 0; i < entries.length; i++) {
     });
 }
 
-const title_cont = document.querySelector(".title-cont");
+const title_cont = document.getElementsByClassName("title-cont")[0];
 title_cont.addEventListener('mouseenter', () => {
     let textWidth = title.clientWidth;
     let boxWidth = parseFloat(getComputedStyle(title_cont).width);
     let translateVal = Math.min(boxWidth - textWidth, 0);
-    title.style.transitionDuration = - 0.01 * translateVal + "s";
+    title.style.transitionDuration = "3s"//- 0.01 * translateVal + "s";
     title.style.transform = "translateX(" + (translateVal - 10) + "px)";
 });
 title_cont.addEventListener('mouseleave', () => {
