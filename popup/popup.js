@@ -174,12 +174,15 @@ for (let i in sitelist.sites) {
             console.error(error);
         });
 
+    const imgurl = `https://www.google.com/s2/favicons?domain=${sitelist.sites[i].url}&sz=12`;
+
     weblist.innerHTML += `
     <div class="entry">
+        <img class="site-icon" src="${imgurl}">
         <a href="${tabdata.fullurl}" target="_blank"><h4>${sitelist.sites[i].url}</h4></a>
         <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
-    </div>
-    `;
+    </div >
+        `;
 }
 
 for (let i = 0; i < entries.length; i++) {

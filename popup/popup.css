@@ -42,6 +42,11 @@ button:hover {
     overflow-y: auto;
 }
 
+.site-icon {
+    height: 12px;
+    width: 12px;
+}
+
 .entry {
     width: 100%;
     height: 15px;
