@@ -216,7 +216,7 @@ try {
 
         weblist.innerHTML += `
 <div class="entry">
-    <a href="${tabdata.fullurl}" target="_blank">
+    <a href="${tabdata.fullurl}" target="_blank" title="${tabdata.fullurl}">
         <img class="site-icon" src="${imgurl}">
         <h4>${sitelist.sites[i].url}</h4>
     </a>
