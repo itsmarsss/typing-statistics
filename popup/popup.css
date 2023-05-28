@@ -401,10 +401,18 @@ button:hover {
 
 .typer {
     display: flex;
+    background: #708090;
+    height: 20px;
+    box-shadow: #6b9ccd66 0px 5px,
+        #6b9ccd4d 0px 10px,
+        #6b9ccd33 0px 15px,
+        #6b9ccd1a 0px 20px,
+        #6b9ccd0d 0px 25px;
 }
 
 .typer-target {
     margin: 0;
+    text-decoration: none;
 }
 
 .typer-name {
@@ -412,4 +420,24 @@ button:hover {
     color: #fff;
     margin: 0;
     margin-right: 100px;
+}
+
+.start {
+    font-size: 10px;
+    font-family: "Poppins";
+    border-radius: 20px;
+    background-color: #2ba8fb;
+    color: #fff;
+    transition: 500ms;
+}
+
+.start:hover {
+    background-color: #6fc5ff;
+    box-shadow: 0 0 20px #6fc5ff50;
+}
+
+.start:active {
+    background-color: #3d94cf;
+    transition: 250ms;
+    box-shadow: none;
 }
