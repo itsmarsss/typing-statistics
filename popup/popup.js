@@ -62,7 +62,7 @@ function getTypeData(site) {
                 console.log(`TabData for "${site}" queried`);
 
                 tabdata = JSON.parse(result[site] || "{}");
-                tabdata[site] = site;
+                tabdata["site"] = site;
 
                 console.log("Before");
                 console.log(tabdata);
@@ -143,32 +143,6 @@ function assignGrade(wpm) {
 
 function getFreq(key) {
     return tabdata[key];
-}
-
-function setSiteList(sitelist) {
-    return new Promise((resolve, reject) => {
-        chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, () => {
-            console.log("SiteList set");
-
-            console.log("After");
-            console.log(sitelist);
-
-            resolve();
-        });
-    });
-}
-
-function setTypeData(site) {
-    return new Promise((resolve, reject) => {
-        chrome.storage.local.set({ [site]: JSON.stringify(tabdata) }, () => {
-            console.log(`TypeData for "${site}" set`);
-
-            console.log("After");
-            console.log(tabdata);
-
-            resolve();
-        });
-    });
 }
 
 document.querySelectorAll(".key").forEach(function (keyb) {
