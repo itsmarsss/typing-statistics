@@ -188,6 +188,7 @@ document.querySelectorAll(".key").forEach(function (keyb) {
 
 back.addEventListener("click", function () {
     viewer.style.transform = "translateX(300px)";
+    moreinfo.style.transform = "translateY(500px)";
 });
 
 morestats.addEventListener("click", function () {
