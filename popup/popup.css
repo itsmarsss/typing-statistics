@@ -505,16 +505,6 @@ button:hover {
     display: flex;
 }
 
-#wpm {
-    width: 75px;
-}
-
-#acc {
-    width: 70px;
-    margin-right: 5px;
-    text-align: right;
-}
-
 #type-left,
 #type-right {
     width: 50%;
