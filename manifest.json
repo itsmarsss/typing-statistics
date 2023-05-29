@@ -7,7 +7,7 @@
   "name": "Typing Statistics",
   "version": "2.3.0",
   "manifest_version": 3,
-  "description": "Typing Statistics: Tracks WPM and other statistics",
+  "description": "Typing Statistics: Tracks WPM and other Statistics",
   "author": "Marsss' Dev Team",
   "content_scripts": [
     {
