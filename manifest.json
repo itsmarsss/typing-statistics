@@ -4,10 +4,10 @@
       "id": "itsmarzzzzzz@protonmail.com"
     }
   },
-  "name": "Typing Statistics (WPM & Auto Typer)",
-  "version": "2.1.0",
+  "name": "Typing Statistics",
+  "version": "2.3.0",
   "manifest_version": 3,
-  "description": "Typing Statistics: Tracks WPM and can Auto Type",
+  "description": "Typing Statistics: Tracks WPM and other statistics",
   "author": "Marsss' Dev Team",
   "content_scripts": [
     {
