@@ -55,6 +55,10 @@ const jsonlist = document.getElementById("json-list");
 const typingtest = document.getElementById("typingtest");
 const typersback = document.getElementById("typers-back");
 
+const text = document.getElementById("text");
+const typefield = document.getElementById("type-field");
+const redo = document.getElementById("redo");
+
 
 
 function getSiteList() {
@@ -127,6 +131,37 @@ async function goTo(site) {
     centermain.innerHTML = assignGrade(rightmain.innerHTML);
 
     viewer.style.transform = "translateX(0px)";
+}
+
+var length = 10;
+var progress = -1;
+
+function setLength(len) {
+    length = len;
+    redoWPM();
+}
+
+function redoWPM() {
+    progress = -1;
+
+    text.innerHTML = "";
+
+    for (var i = 0; i < length; i++) {
+        var word = "word";
+
+        text.innerHTML += `
+        <span data-index="${i}">${word} <span>
+        `;
+    }
+
+    document.querySelectorAll('[data-index]')[0].classList.add("highlight");
+
+    highlightNext();
+}
+
+function highlightNext() {
+    progress += 1;
+
 }
 
 function assignGrade(wpm) {
@@ -248,6 +283,20 @@ title_cont.addEventListener('mouseleave', () => {
     title.style.transform = "translateX(0)";
 });
 
+redo.addEventListener("click", function () {
+    redoWPM();
+});
+
+typefield.addEventListener("keydown", function (event) {
+
+});
+
+document.querySelectorAll(".words").forEach(function (word) {
+    word.addEventListener('click', function () {
+        setLength(word.dataset.count);
+    });
+});
+
 document.querySelectorAll(".key").forEach(function (keyb) {
     keyb.addEventListener('mouseover', function () {
         key.style.transform = "translateY(-5px)";
@@ -294,6 +343,7 @@ moreback.addEventListener("click", function () {
 
 typetest.addEventListener("click", function () {
     typingtest.style.transform = "translateX(0px)";
+    redoWPM();
 });
 
 typersback.addEventListener("click", function () {

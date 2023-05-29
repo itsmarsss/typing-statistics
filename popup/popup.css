@@ -438,7 +438,7 @@ button:hover {
     font-family: "Poppins";
     color: #fff;
     margin: 10px;
-    background: #899cae;
+    background: #5f6368;
     padding: 5px;
     border-radius: 5px;
 }
@@ -482,4 +482,16 @@ button:hover {
 
 #redo:active {
     background: #748393;
+}
+
+.highlight {
+    color: #bdebff;
+}
+
+.correct {
+    color: #ffbdbd;
+}
+
+.wrong {
+    color: #bdffbe;
 }
