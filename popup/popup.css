@@ -407,7 +407,7 @@ button:hover {
 }
 
 #first {
-    width: 50%;
+    width: 120px;
 }
 
 #second {
@@ -417,14 +417,11 @@ button:hover {
 }
 
 #wpm {
-    width: 65px;
-    margin-right: 3px;
-    text-align: right;
+    width: 70px;
 }
 
 #acc {
-    width: 65px;
-    margin-left: 3px;
+    width: 70px;
 }
 
 .words {
@@ -485,7 +482,8 @@ button:hover {
 }
 
 .highlight {
-    color: #bdebff;
+    color: #71d4fe;
+    font-weight: bold;
 }
 
 .correct {

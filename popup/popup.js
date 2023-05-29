@@ -135,12 +135,12 @@ async function goTo(site) {
     viewer.style.transform = "translateX(0px)";
 }
 
-var length = 10;
+var wpmlength = 10;
 var progress = 0;
 var correct = 0;
 
 function setLength(len) {
-    length = len;
+    wpmlength = len;
     redoWPM();
 }
 
@@ -151,7 +151,7 @@ function redoWPM() {
     typefield.value = "";
     text.innerHTML = "";
 
-    for (var i = 0; i < length; i++) {
+    for (var i = 0; i < wpmlength; i++) {
         var word = "word";
 
         text.innerHTML += `
@@ -172,12 +172,14 @@ function highlightNext() {
         current.classList.add("wrong");
     }
 
-    typefield.value = "";
-
     progress += 1;
 
-    if (progress === length) {
-        acc.innerHTML = "ACC: " + Math.round((correct / length) * 100);
+    console.log(progress);
+    console.log(wpmlength);
+
+    if (progress == wpmlength) {
+        console.log("yummy");
+        acc.innerHTML = "ACC: " + Math.round((correct / wpmlength) * 100);
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
@@ -308,8 +310,11 @@ redo.addEventListener("click", function () {
 });
 
 typefield.addEventListener("keyup", function (event) {
-    if (event.key === " " && typefield.value.length > 1) {
-        highlightNext();
+    if (event.key === " ") {
+        if (typefield.value.length > 1) {
+            highlightNext();
+        }
+        typefield.value = "";
     }
 });
 
