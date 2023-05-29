@@ -163,14 +163,20 @@ function redoWPM() {
     document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
 }
 
-function highlightNext() {
+function highlightNext(word) {
     if (progress >= wpmlength) {
         return;
     }
 
     const current = document.querySelectorAll('[data-index]')[progress];
 
-    if (typefield.value === current.innerHTML) {
+    var target = current.innerHTML;
+
+    if(word.charAt(0) == " ") {
+        target = " " + target;
+    }
+
+    if ((word + " ") === target) {
         current.classList.add("correct");
         correct += 1;
     } else {
@@ -310,22 +316,38 @@ redo.addEventListener("click", function () {
     redoWPM();
 });
 
-typefield.addEventListener("keyup", function (event) {
-    if (event.key === " ") {
-        if (typefield.value.length > 1) {
-            highlightNext();
-        }
-        typefield.value = "";
-    }
-});
-
 typefield.addEventListener("keydown", function (event) {
     if (progress == 0) {
         if (typefield.value.length == 1) {
             starttime = Date.now();
         }
     }
-})
+    
+    if (event.key === " ") {
+        const word = typefield.value;
+        typefield.value = "";
+        if (word.length > 1) {
+            highlightNext(word);
+        }
+    }
+
+    if (progress == wpmlength - 1) {
+        console.log("yse");
+
+        const current = document.querySelectorAll('[data-index]')[progress];
+        var target = current.innerHTML;
+
+        var word = typefield.value + event.key;
+        if(word.charAt(0) == " ") {
+            target = " " + target;
+        }
+
+        if ((word + " ") == target) {
+            console.log("yee");
+            highlightNext(word);
+        }
+    }
+});
 
 document.querySelectorAll(".words").forEach(function (word) {
     word.addEventListener('click', function () {
