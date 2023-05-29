@@ -172,7 +172,7 @@ function highlightNext(word) {
 
     var target = current.innerHTML;
 
-    if(word.charAt(0) == " ") {
+    if (word.charAt(0) == " ") {
         target = " " + target;
     }
 
@@ -322,7 +322,7 @@ typefield.addEventListener("keydown", function (event) {
             starttime = Date.now();
         }
     }
-    
+
     if (event.key === " ") {
         const word = typefield.value;
         typefield.value = "";
@@ -336,7 +336,7 @@ typefield.addEventListener("keydown", function (event) {
         var target = current.innerHTML;
 
         var word = typefield.value + event.key;
-        if(word.charAt(0) == " ") {
+        if (word.charAt(0) == " ") {
             target = " " + target;
         }
 

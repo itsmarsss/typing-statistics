@@ -480,15 +480,17 @@ button:hover {
 
 .highlight {
     color: #71d4fe;
-    font-weight: bold;
+    text-shadow: 1px 0px 0px #71d4fe;
 }
 
 .correct {
     color: #bdffbe;
+    text-shadow: 1px 0px 0px #bdffbe;
 }
 
 .wrong {
     color: #ffbdbd;
+    text-shadow: 1px 0px 0px #ffbdbd;
 }
 
 #type-stats {
