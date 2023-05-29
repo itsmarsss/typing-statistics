@@ -398,3 +398,88 @@ button:hover {
     transform: translateX(-300px);
     transition: 200ms ease-in-out;
 }
+
+#top {
+    padding-left: 5px;
+    font-family: "Poppins";
+    color: #fff;
+    display: flex;
+}
+
+#first {
+    width: 50%;
+}
+
+#second {
+    width: 50%;
+    display: flex;
+    justify-content: right;
+}
+
+#wpm {
+    width: 65px;
+    margin-right: 3px;
+    text-align: right;
+}
+
+#acc {
+    width: 65px;
+    margin-left: 3px;
+}
+
+.words {
+    text-decoration: underline;
+    margin-left: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+#content {
+    font-family: "Poppins";
+    color: #fff;
+    margin: 10px;
+    background: #899cae;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#input {
+    margin-top: 10px;
+}
+
+#type-field {
+    font-family: "Poppins";
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 155px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 200ms;
+}
+
+#type-field:focus {
+    background: #eee;
+}
+
+#redo {
+    background: #708090;
+    color: #aaccf4;
+    transform: translateX(0px);
+    width: 55px;
+    outline: none;
+    border: none;
+    height: 22px;
+    border-radius: 5px;
+    transition: 200ms;
+}
+
+#redo:hover {
+    background: #626f7d;
+}
+
+#redo:active {
+    background: #748393;
+}
