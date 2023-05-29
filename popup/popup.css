@@ -415,10 +415,10 @@ button:hover {
 }
 
 #top {
-    padding-left: 5px;
     font-family: "Poppins";
     color: #fff;
     display: flex;
+    justify-content: center;
 }
 
 .words {
