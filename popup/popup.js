@@ -194,7 +194,17 @@ function highlightNext(word) {
         wpm.innerHTML = Math.round(60000 / ((Date.now() - starttime) / wpmlength));
         acc.innerHTML = Math.round((correct / wpmlength) * 100);
 
+
         incorrectlist.innerHTML = "";
+
+        if (incorrect.length == 0) {
+            incorrectlist.innerHTML = `
+            <div class="nodata correct">
+                All Correct!
+            </div>
+            `;
+        }
+
         for (var i = 0; i < incorrect.length; i++) {
             incorrectlist.innerHTML += `
                 <li>${incorrect[i]}</li>

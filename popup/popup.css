@@ -52,9 +52,8 @@ li {
     color: #272b2c;
 }
 
-#nodata {
+.nodata {
     color: #fff;
-    margin-bottom: 255px;
     margin-left: 20px;
 }
 
