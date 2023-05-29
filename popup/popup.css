@@ -397,6 +397,22 @@ button:hover {
     flex-direction: column;
     transform: translateX(-300px);
     transition: 200ms ease-in-out;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+#typingtest::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+}
+
+#type-header {
+    top: 0px;
+    position: sticky;
+    background: #272b2c;
+    box-shadow: #000000d0 0px 8px 24px;
+    margin-bottom: 10px;
 }
 
 #top {
