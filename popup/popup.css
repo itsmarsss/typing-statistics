@@ -417,11 +417,13 @@ button:hover {
 }
 
 #wpm {
-    width: 70px;
+    width: 75px;
 }
 
 #acc {
     width: 70px;
+    margin-right: 5px;
+    text-align: right;
 }
 
 .words {

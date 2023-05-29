@@ -311,12 +311,6 @@ redo.addEventListener("click", function () {
 });
 
 typefield.addEventListener("keyup", function (event) {
-    if (progress == 0) {
-        if (typefield.value.length == 1) {
-            starttime = Date.now();
-        }
-    }
-
     if (event.key === " ") {
         if (typefield.value.length > 1) {
             highlightNext();
@@ -324,6 +318,14 @@ typefield.addEventListener("keyup", function (event) {
         typefield.value = "";
     }
 });
+
+typefield.addEventListener("keydown", function (event) {
+    if (progress == 0) {
+        if (typefield.value.length == 1) {
+            starttime = Date.now();
+        }
+    }
+})
 
 document.querySelectorAll(".words").forEach(function (word) {
     word.addEventListener('click', function () {
