@@ -308,7 +308,7 @@ redo.addEventListener("click", function () {
 });
 
 typefield.addEventListener("keyup", function (event) {
-    if (event.key === " " && typefield.value.length > 0) {
+    if (event.key === " " && typefield.value.length > 1) {
         highlightNext();
     }
 });
