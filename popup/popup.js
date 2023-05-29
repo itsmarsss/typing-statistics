@@ -174,11 +174,7 @@ function highlightNext() {
 
     progress += 1;
 
-    console.log(progress);
-    console.log(wpmlength);
-
     if (progress == wpmlength) {
-        console.log("yummy");
         acc.innerHTML = "ACC: " + Math.round((correct / wpmlength) * 100);
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
@@ -418,12 +414,3 @@ for (let i = 0; i < entries.length; i++) {
         goTo(entry.dataset.url);
     });
 }
-
-getCurrentTab().then((tab) => {
-    const { id, url } = tab;
-    chrome.scripting.executeScript(
-        {
-            target: { tabId: id, allFrames: true },
-            files: ['/autotypers/typings.js']
-        });
-});
