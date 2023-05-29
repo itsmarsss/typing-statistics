@@ -186,8 +186,8 @@ function highlightNext(word) {
     progress += 1;
 
     if (progress == wpmlength) {
-        wpm.innerHTML = "WPM: " + Math.round(60000 / ((Date.now() - starttime) / wpmlength));
-        acc.innerHTML = "ACC: " + Math.round((correct / wpmlength) * 100);
+        wpm.innerHTML = Math.round(60000 / ((Date.now() - starttime) / wpmlength));
+        acc.innerHTML = Math.round((correct / wpmlength) * 100);
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
@@ -332,8 +332,6 @@ typefield.addEventListener("keydown", function (event) {
     }
 
     if (progress == wpmlength - 1) {
-        console.log("yse");
-
         const current = document.querySelectorAll('[data-index]')[progress];
         var target = current.innerHTML;
 
@@ -343,7 +341,6 @@ typefield.addEventListener("keydown", function (event) {
         }
 
         if ((word + " ") == target) {
-            console.log("yee");
             highlightNext(word);
         }
     }
