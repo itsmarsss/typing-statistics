@@ -20,7 +20,7 @@
 
 
 const summary = document.getElementById("summary");
-const autotypers = document.getElementById("autotypers");
+const typetest = document.getElementById("typetest");
 
 
 
@@ -52,7 +52,7 @@ const jsonlist = document.getElementById("json-list");
 
 
 
-const typers = document.getElementById("typers");
+const typingtest = document.getElementById("typingtest");
 const typersback = document.getElementById("typers-back");
 
 
@@ -292,12 +292,12 @@ moreback.addEventListener("click", function () {
     moreinfo.style.transform = "translateY(500px)";
 });
 
-autotypers.addEventListener("click", function () {
-    typers.style.transform = "translateX(0px)";
+typetest.addEventListener("click", function () {
+    typingtest.style.transform = "translateX(0px)";
 });
 
 typersback.addEventListener("click", function () {
-    typers.style.transform = "translateX(-300px)";
+    typingtest.style.transform = "translateX(-300px)";
 });
 
 const sitelist = await getSiteList();
