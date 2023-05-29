@@ -498,11 +498,6 @@ button:hover {
     flex-direction: column;
 }
 
-#type-stats>h2 {
-    color: #fff;
-    margin-left: 10px;
-}
-
 #upper {
     display: flex;
 }
