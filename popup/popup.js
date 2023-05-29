@@ -62,6 +62,8 @@ const redo = document.getElementById("redo");
 const wpm = document.getElementById("wpm");
 const acc = document.getElementById("acc");
 
+const incorrectlist = document.getElementById("incorrect-list");
+
 
 
 function getSiteList() {
@@ -138,6 +140,7 @@ async function goTo(site) {
 var wpmlength = 10;
 var progress = 0;
 var correct = 0;
+var incorrect = [];
 var starttime = 0;
 
 function setLength(len) {
@@ -148,6 +151,7 @@ function setLength(len) {
 function redoWPM() {
     progress = 0;
     correct = 0;
+    incorrect = [];
 
     typefield.value = "";
     text.innerHTML = "";
@@ -181,6 +185,7 @@ function highlightNext(word) {
         correct += 1;
     } else {
         current.classList.add("wrong");
+        incorrect.push(("<span>" + target + "</span>"));
     }
 
     progress += 1;
@@ -188,9 +193,25 @@ function highlightNext(word) {
     if (progress == wpmlength) {
         wpm.innerHTML = Math.round(60000 / ((Date.now() - starttime) / wpmlength));
         acc.innerHTML = Math.round((correct / wpmlength) * 100);
+
+        incorrectlist.innerHTML = "";
+        for (var i = 0; i < incorrect.length; i++) {
+            incorrectlist.innerHTML += `
+                <li>${incorrect[i]}</li>
+            `;
+        }
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 function assignGrade(wpm) {
@@ -326,9 +347,7 @@ typefield.addEventListener("keydown", function (event) {
     if (event.key === " ") {
         const word = typefield.value;
         typefield.value = "";
-        if (word.length > 1) {
-            highlightNext(word);
-        }
+        highlightNext(word);
     }
 
     if (progress == wpmlength - 1) {
