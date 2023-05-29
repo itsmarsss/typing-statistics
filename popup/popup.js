@@ -59,6 +59,9 @@ const text = document.getElementById("text");
 const typefield = document.getElementById("type-field");
 const redo = document.getElementById("redo");
 
+const wpm = document.getElementById("wpm");
+const acc = document.getElementById("acc");
+
 
 
 function getSiteList() {
@@ -134,6 +137,7 @@ async function goTo(site) {
 
 var length = 10;
 var progress = 0;
+var correct = 0;
 
 function setLength(len) {
     length = len;
@@ -142,6 +146,7 @@ function setLength(len) {
 
 function redoWPM() {
     progress = 0;
+    correct = 0;
 
     typefield.value = "";
     text.innerHTML = "";
@@ -162,6 +167,7 @@ function highlightNext() {
 
     if (typefield.value === current.innerHTML) {
         current.classList.add("correct");
+        correct += 1;
     } else {
         current.classList.add("wrong");
     }
@@ -170,7 +176,12 @@ function highlightNext() {
 
     progress += 1;
 
-    document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
+    if (progress === length) {
+        acc.innerHTML = "ACC: " + Math.round((correct / length) * 100);
+    } else {
+        document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
+    }
+
 }
 
 function assignGrade(wpm) {
@@ -288,7 +299,7 @@ title_cont.addEventListener('mouseenter', () => {
     title.style.transform = "translateX(" + (translateVal - 10) + "px)";
 });
 title_cont.addEventListener('mouseleave', () => {
-    title.style.transitionDuration = "0.3s";
+    title.style.transitionDuration = "300ms";
     title.style.transform = "translateX(0)";
 });
 
@@ -297,7 +308,7 @@ redo.addEventListener("click", function () {
 });
 
 typefield.addEventListener("keyup", function (event) {
-    if (event.key === " ") {
+    if (event.key === " " && typefield.value.length > 0) {
         highlightNext();
     }
 });
@@ -402,6 +413,7 @@ for (let i = 0; i < entries.length; i++) {
         goTo(entry.dataset.url);
     });
 }
+
 getCurrentTab().then((tab) => {
     const { id, url } = tab;
     chrome.scripting.executeScript(
