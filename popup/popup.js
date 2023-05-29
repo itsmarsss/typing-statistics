@@ -118,7 +118,6 @@ var tabdata = {};
 async function goTo(site) {
     console.log("Go To " + site);
 
-
     await getTypeData(site)
         .catch((error) => {
             console.error(error);
@@ -134,7 +133,7 @@ async function goTo(site) {
 }
 
 var length = 10;
-var progress = -1;
+var progress = 0;
 
 function setLength(len) {
     length = len;
@@ -142,26 +141,36 @@ function setLength(len) {
 }
 
 function redoWPM() {
-    progress = -1;
+    progress = 0;
 
+    typefield.value = "";
     text.innerHTML = "";
 
     for (var i = 0; i < length; i++) {
         var word = "word";
 
         text.innerHTML += `
-        <span data-index="${i}">${word} <span>
+        <span data-index="${i}">${word} </span>
         `;
     }
 
-    document.querySelectorAll('[data-index]')[0].classList.add("highlight");
-
-    highlightNext();
+    document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
 }
 
 function highlightNext() {
+    const current = document.querySelectorAll('[data-index]')[progress];
+
+    if (typefield.value === current.innerHTML) {
+        current.classList.add("correct");
+    } else {
+        current.classList.add("wrong");
+    }
+
+    typefield.value = "";
+
     progress += 1;
 
+    document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
 }
 
 function assignGrade(wpm) {
@@ -287,8 +296,10 @@ redo.addEventListener("click", function () {
     redoWPM();
 });
 
-typefield.addEventListener("keydown", function (event) {
-
+typefield.addEventListener("keyup", function (event) {
+    if (event.key === " ") {
+        highlightNext();
+    }
 });
 
 document.querySelectorAll(".words").forEach(function (word) {

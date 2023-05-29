@@ -489,9 +489,9 @@ button:hover {
 }
 
 .correct {
-    color: #ffbdbd;
+    color: #bdffbe;
 }
 
 .wrong {
-    color: #bdffbe;
+    color: #ffbdbd;
 }
