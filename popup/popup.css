@@ -511,13 +511,3 @@ button:hover {
 #type-right {
     width: 50%;
 }
-
-#lower {
-    display: flex;
-}
-
-#type-lower-left,
-#type-lower-center,
-#type-lower-right {
-    width: 33%;
-}
