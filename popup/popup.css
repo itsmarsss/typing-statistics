@@ -421,26 +421,6 @@ button:hover {
     display: flex;
 }
 
-#first {
-    width: 120px;
-}
-
-#second {
-    width: 50%;
-    display: flex;
-    justify-content: right;
-}
-
-#wpm {
-    width: 75px;
-}
-
-#acc {
-    width: 70px;
-    margin-right: 5px;
-    text-align: right;
-}
-
 .words {
     text-decoration: underline;
     margin-left: 3px;
@@ -523,6 +503,16 @@ button:hover {
 
 #upper {
     display: flex;
+}
+
+#wpm {
+    width: 75px;
+}
+
+#acc {
+    width: 70px;
+    margin-right: 5px;
+    text-align: right;
 }
 
 #type-left,
