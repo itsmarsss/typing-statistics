@@ -510,3 +510,32 @@ button:hover {
 .wrong {
     color: #ffbdbd;
 }
+
+#type-stats {
+    display: flex;
+    flex-direction: column;
+}
+
+#type-stats>h2 {
+    color: #fff;
+    margin-left: 5px;
+}
+
+#upper {
+    display: flex;
+}
+
+#type-left,
+#type-right {
+    width: 50%;
+}
+
+#lower {
+    display: flex;
+}
+
+#type-lower-left,
+#type-lower-center,
+#type-lower-right {
+    width: 33%;
+}
