@@ -138,6 +138,7 @@ async function goTo(site) {
 var wpmlength = 10;
 var progress = 0;
 var correct = 0;
+var starttime = 0;
 
 function setLength(len) {
     wpmlength = len;
@@ -163,6 +164,10 @@ function redoWPM() {
 }
 
 function highlightNext() {
+    if (progress >= wpmlength) {
+        return;
+    }
+
     const current = document.querySelectorAll('[data-index]')[progress];
 
     if (typefield.value === current.innerHTML) {
@@ -175,11 +180,11 @@ function highlightNext() {
     progress += 1;
 
     if (progress == wpmlength) {
+        wpm.innerHTML = "WPM: " + Math.round(60000 / ((Date.now() - starttime) / wpmlength));
         acc.innerHTML = "ACC: " + Math.round((correct / wpmlength) * 100);
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
-
 }
 
 function assignGrade(wpm) {
@@ -306,6 +311,12 @@ redo.addEventListener("click", function () {
 });
 
 typefield.addEventListener("keyup", function (event) {
+    if (progress == 0) {
+        if (typefield.value.length == 1) {
+            starttime = Date.now();
+        }
+    }
+
     if (event.key === " ") {
         if (typefield.value.length > 1) {
             highlightNext();
