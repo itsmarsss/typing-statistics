@@ -167,6 +167,10 @@ function redoWPM() {
     document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
 }
 
+var xyWPMValues = [];
+var xyACCValues = [];
+var valCount = 1;
+
 function highlightNext(word) {
     if (progress >= wpmlength) {
         return;
@@ -210,6 +214,44 @@ function highlightNext(word) {
                 <li>${incorrect[i]}</li>
             `;
         }
+
+        xyWPMValues.push({ x: valCount, y: wpm.innerHTML });
+
+        valCount += 1;
+
+        new Chart("wpmprogresschart", {
+        type: "line",
+        data: {
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: xyWPMValues
+            }]
+        },
+        options: {
+            legend: {display: false}
+        }
+        });
+
+        xyACCValues.push({ x: valCount, y: acc.innerHTML });
+
+        new Chart("accprogresschart", {
+            type: "line",
+            data: {
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: xyACCValues
+                }]
+            },
+            options: {
+                legend: {display: false}
+            }
+            });
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }

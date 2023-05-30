@@ -509,3 +509,15 @@ li {
 #type-right {
     width: 50%;
 }
+
+#wpmprogresschart {
+    margin-left: 12.5px;
+    background: #fff;
+    height: 300px;
+}
+
+#accprogresschart {
+    margin-left: 12.5px;
+    background: #fff;
+    height: 300px;
+}
