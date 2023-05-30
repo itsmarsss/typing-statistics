@@ -21,7 +21,7 @@ The Typing-Statistics Chrome extension is a tool that tracks and provides insigh
 
 ### Firefox Add-on
 
-1. Open Mozilla Firefox and go to the [Typing-Statistics add-on page](https://addons.mozilla.org/firefox/addon/).
+1. Open Mozilla Firefox and go to the [Typing-Statistics add-on page](https://addons.mozilla.org/firefox/addon/typing-statistics/).
 2. Click the "Add to Firefox" button.
 3. In the confirmation dialog, click "Add".
 4. The Typing-Statistics add-on should now be installed in your Firefox browser.
