@@ -414,10 +414,10 @@ morestats.addEventListener("click", function () {
     for (var jsonkey of Object.keys(tabdata)) {
         jsonlist.innerHTML += `
 <div class="list-entry">
-    <h4 class="jsonkey jsonpart">${jsonkey.replace(" ", "Space")}</h4>
-    <h4 class="jsonvalue jsonpart">${tabdata[jsonkey]}</h4>
-</div>
-        `;
+    <h4 class="jsonkey jsonpart">${jsonkey.replace(" ", "space")}</h4>
+    <h4 class="jsonvalue jsonpart">${(Math.round(((tabdata[jsonkey]) + Number.EPSILON) * 100) / 100) || "N/A"}</h4 >
+</div >
+    `;
     }
 });
 
