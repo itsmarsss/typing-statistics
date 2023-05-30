@@ -25,7 +25,7 @@ body {
 }
 
 vr {
-    background-color: #4e50583e;
+    background: #4e50583e;
     border: none;
     border-radius: 1px;
     width: 2px;
@@ -54,6 +54,25 @@ li {
     float: right;
     margin-top: 5px;
     margin-right: 5px;
+}
+
+#colorpickers{
+    padding-left: 5px;
+}
+
+.settings-title {
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+}
+
+.colorpicker {
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 25px;
+    border: 0;
+    background: var(--bkgd-main);
 }
 
 .special-btn {

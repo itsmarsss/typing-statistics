@@ -225,8 +225,6 @@ function highlightNext(word) {
         xyWPMValues.push({ x: Number(valCount), y: Number(wpm.innerHTML) });
         NumLabels.push(valCount);
 
-        valCount += 1;
-
         new Chart("wpmprogresschart", {
         type: "line",
         data: {
@@ -292,6 +290,8 @@ function highlightNext(word) {
                 } 
             }
             });
+
+            valCount += 1;
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
