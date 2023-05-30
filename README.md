@@ -28,7 +28,7 @@ The Typing-Statistics Chrome extension is a tool that tracks and provides insigh
 
 ### Manual ZIP File Upload
 
-1. Go to the [Typing-Statistics GitHub releases](https://github.com/itsmarsss/).
+1. Go to the [Typing-Statistics GitHub releases](https://github.com/itsmarsss/Typing-Statistics/releases).
 2. Scroll down on the first release and click "Typing-Statistics.zip" to download.
 3. Extract the ZIP file to a folder on your computer.
 4. Open Google Chrome or Mozilla Firefox and go to the browser's extensions page.
