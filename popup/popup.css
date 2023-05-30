@@ -8,6 +8,9 @@
 
     --bkgd-main: #272b2c;
     --bkgd-accent: #2f3336;
+    --bkgd-more-accent: #5f6368;
+
+    --other: #708090;
 }
 
 html {
@@ -78,7 +81,7 @@ li {
 
 #web-list::-webkit-scrollbar-thumb,
 #json-list::-webkit-scrollbar-thumb {
-    background-color: #708090;
+    background-color: var(--other);
     border-radius: 20px;
     border: 3.5px solid var(--bkgd-main);
 }
@@ -98,7 +101,7 @@ li {
     margin-bottom: 10px;
     margin-right: 5px;
     border-bottom: 2px solid var(--text-more-accent);
-    background: #4d5256;
+    background: var(--bkgd-more-accent);
     border-radius: 5px;
     box-shadow: #ffffff88 0px 4px 6px;
     transition: 300ms;
@@ -422,7 +425,7 @@ li {
     top: 0px;
     position: sticky;
     background: var(--bkgd-main);
-    box-shadow: #000000d0 0px 8px 24px;
+    box-shadow: var(--bkgd-main) 0px 8px 24px;
     margin-bottom: 10px;
     z-index: 1;
 }
@@ -445,7 +448,7 @@ li {
     font-family: "Poppins";
     color: var(--text);
     margin: 10px;
-    background: #5f6368;
+    background: var(--bkgd-more-accent);
     padding: 5px;
     border-radius: 5px;
 }
@@ -472,7 +475,7 @@ li {
 }
 
 #redo {
-    background: #708090;
+    background: var(--other);
     color: var(--text-more-accent);
     transform: translateX(0px);
     width: 55px;
@@ -484,11 +487,11 @@ li {
 }
 
 #redo:hover {
-    background: #626f7d;
+    filter: brightness(0.9);
 }
 
 #redo:active {
-    background: #748393;
+    filter: brightness(1);
 }
 
 .highlight {
@@ -523,7 +526,7 @@ li {
 .graph {
     padding-top: 5px;
     margin-left: 12.5px;
-    background: #748393;
+    background: var(--bkgd-more-accent);
     height: 150px;
     margin-bottom: 10px;
     border-radius: 10px;
