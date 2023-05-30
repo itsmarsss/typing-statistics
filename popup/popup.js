@@ -415,7 +415,7 @@ morestats.addEventListener("click", function () {
         jsonlist.innerHTML += `
 <div class="list-entry">
     <h4 class="jsonkey jsonpart">${jsonkey.replace(" ", "space")}</h4>
-    <h4 class="jsonvalue jsonpart">${(Math.round(((tabdata[jsonkey]) + Number.EPSILON) * 100) / 100) || "N/A"}</h4 >
+    <h4 class="jsonvalue jsonpart">${(Math.round(((tabdata[jsonkey]) + Number.EPSILON) * 100) / 100) || tabdata[jsonkey]}</h4 >
 </div >
     `;
     }
