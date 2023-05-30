@@ -366,10 +366,32 @@ async function getCurrentTab() {
 
 settings.addEventListener("click", function() {
     settingsviewer.style.transform = "translateY(0px)";
+
+    var style = getComputedStyle(document.body)
+
+    document.getElementById("text2").value = style.getPropertyValue('--text');
+    document.getElementById("text-accent").value = style.getPropertyValue('--text-accent');
+    document.getElementById("text-more-accent").value = style.getPropertyValue('--text-more-accent');
+
+    document.getElementById("bkgd-main").value = style.getPropertyValue('--bkgd-main');
+    document.getElementById("bkgd-accent").value = style.getPropertyValue('--bkgd-accent');
+    document.getElementById("bkgd-more-accent").value = style.getPropertyValue('--bkgd-more-accent');
+
+    document.getElementById("other").value = style.getPropertyValue('--other');
+
 });
 
 settingsback.addEventListener("click", function(){
     settingsviewer.style.transform = "translateY(-500px)";
+    document.documentElement.style.setProperty('--text', document.getElementById("text2").value);
+    document.documentElement.style.setProperty('--text-accent', document.getElementById("text-accent").value);
+    document.documentElement.style.setProperty('--text-more-accent', document.getElementById("text-more-accent").value);
+
+    document.documentElement.style.setProperty('--bkgd-main', document.getElementById("bkgd-main").value);
+    document.documentElement.style.setProperty('--bkgd-accent', document.getElementById("bkgd-accent").value);
+    document.documentElement.style.setProperty('--bkgd-more-accent', document.getElementById("bkgd-more-accent").value);
+
+    document.documentElement.style.setProperty('--other', document.getElementById("other").value);
 });
 
 summary.addEventListener("click", async function () {

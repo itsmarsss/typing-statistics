@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 :root {
-    --text: #fff;
+    --text: #ffffff;
     --text-accent: #71d4fe;
     --text-more-accent: #aaccf4;
 
@@ -69,7 +69,7 @@ li {
 .colorpicker {
     margin: 0;
     padding: 0;
-    width: 100px;
+    width: 240;
     height: 25px;
     border: 0;
     background: var(--bkgd-main);
