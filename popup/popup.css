@@ -415,6 +415,7 @@ li {
     background: #272b2c;
     box-shadow: #000000d0 0px 8px 24px;
     margin-bottom: 10px;
+    z-index: 1;
 }
 
 #top {
@@ -510,14 +511,13 @@ li {
     width: 50%;
 }
 
-#wpmprogresschart {
+.graph {
+    padding-top: 5px;
     margin-left: 12.5px;
-    background: #fff;
-    height: 300px;
-}
-
-#accprogresschart {
-    margin-left: 12.5px;
-    background: #fff;
-    height: 300px;
+    background: #748393;
+    color: #aaccf4;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-bottom: #71d4fe solid 5px;
 }
