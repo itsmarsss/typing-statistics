@@ -19,6 +19,12 @@
 */
 
 
+const settings = document.getElementById("settings");
+const settingsviewer = document.getElementById("settings-viewer");
+const settingsback = document.getElementById("settings-back");
+
+
+
 const summary = document.getElementById("summary");
 const typetest = document.getElementById("typetest");
 
@@ -357,6 +363,14 @@ async function getCurrentTab() {
     let [tab] = await chrome.tabs.query(queryOptions);
     return tab;
 }
+
+settings.addEventListener("click", function() {
+    settingsviewer.style.transform = "translateY(0px)";
+});
+
+settingsback.addEventListener("click", function(){
+    settingsviewer.style.transform = "translateY(-500px)";
+});
 
 summary.addEventListener("click", async function () {
     console.log("View all");
