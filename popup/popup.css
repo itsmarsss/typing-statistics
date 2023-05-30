@@ -515,9 +515,13 @@ li {
     padding-top: 5px;
     margin-left: 12.5px;
     background: #748393;
-    color: #aaccf4;
     height: 150px;
     margin-bottom: 10px;
     border-radius: 10px;
     border-bottom: #71d4fe solid 5px;
+    transition: 200ms;
+}
+
+.graph:hover {
+    border-bottom: #aaccf4 solid 5px;
 }

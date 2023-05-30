@@ -228,8 +228,8 @@ function highlightNext(word) {
             datasets: [{
                 fill: false,
                 lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
+                backgroundColor: "#71d4fe",
+                borderColor: "#71d4fe88",
                 data: xyWPMValues
             }]
         },
@@ -262,8 +262,8 @@ function highlightNext(word) {
                 datasets: [{
                     fill: false,
                     lineTension: 0,
-                    backgroundColor: "rgba(0,0,255,1.0)",
-                    borderColor: "rgba(0,0,255,0.1)",
+                    backgroundColor: "#71d4fe",
+                    borderColor: "#71d4fe88",
                     data: xyACCValues
                 }]
             },
