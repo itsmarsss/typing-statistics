@@ -22,6 +22,7 @@
 const settings = document.getElementById("settings");
 const settingsviewer = document.getElementById("settings-viewer");
 const settingsback = document.getElementById("settings-back");
+const returntodefault = document.getElementById("returntodefault");
 
 
 
@@ -378,7 +379,6 @@ settings.addEventListener("click", function() {
     document.getElementById("bkgd-more-accent").value = style.getPropertyValue('--bkgd-more-accent');
 
     document.getElementById("other").value = style.getPropertyValue('--other');
-
 });
 
 settingsback.addEventListener("click", function(){
@@ -392,6 +392,18 @@ settingsback.addEventListener("click", function(){
     document.documentElement.style.setProperty('--bkgd-more-accent', document.getElementById("bkgd-more-accent").value);
 
     document.documentElement.style.setProperty('--other', document.getElementById("other").value);
+});
+
+returntodefault.addEventListener("click", function(){
+    document.getElementById("text2").value = style.getPropertyValue('--text-default');
+    document.getElementById("text-accent").value = style.getPropertyValue('--text-accent-default');
+    document.getElementById("text-more-accent").value = style.getPropertyValue('--text-more-accent-default');
+
+    document.getElementById("bkgd-main").value = style.getPropertyValue('--bkgd-main-default');
+    document.getElementById("bkgd-accent").value = style.getPropertyValue('--bkgd-accent-default');
+    document.getElementById("bkgd-more-accent").value = style.getPropertyValue('--bkgd-more-accent-default');
+
+    document.getElementById("other").value = style.getPropertyValue('--other-default');
 });
 
 summary.addEventListener("click", async function () {

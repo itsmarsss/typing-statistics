@@ -11,6 +11,17 @@
     --bkgd-more-accent: #5f6368;
 
     --other: #708090;
+
+
+    --text-default: #ffffff;
+    --text-accent-default: #71d4fe;
+    --text-more-accent-default: #aaccf4;
+
+    --bkgd-main-default: #272b2c;
+    --bkgd-accent-default: #2f3336;
+    --bkgd-more-accent-default: #5f6368;
+
+    --other-default: #708090;
 }
 
 html {
