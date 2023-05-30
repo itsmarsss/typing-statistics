@@ -71,8 +71,9 @@ const text = document.getElementById("text");
 const typefield = document.getElementById("type-field");
 const redo = document.getElementById("redo");
 
-const wpm = document.getElementById("wpm");
+const rawwpm = document.getElementById("rawwpm");
 const acc = document.getElementById("acc");
+const wpm = document.getElementById("wpm");
 
 const incorrectlist = document.getElementById("incorrect-list");
 
@@ -208,9 +209,9 @@ function highlightNext(word) {
     progress += 1;
 
     if (progress == wpmlength) {
-        wpm.innerHTML = Math.round(60000 / ((Date.now() - starttime) / wpmlength));
+        rawwpm.innerHTML = Math.round(60000 / ((Date.now() - starttime) / wpmlength));
         acc.innerHTML = Math.round((correct / wpmlength) * 100);
-
+        wpm.innerHTML = Math.round(rawwpm.innerHTML * (acc.innerHTML/100));
 
         incorrectlist.innerHTML = "";
 
