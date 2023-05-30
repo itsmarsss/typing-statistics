@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
+:root {
+    --text: #fff;
+    --text-accent: #71d4fe;
+    --text-more-accent: #aaccf4;
+
+    --bkgd-main: #272b2c;
+    --bkgd-accent: #2f3336;
+}
+
 html {
     width: 250px;
     height: 375px;
@@ -9,7 +18,7 @@ html {
 body {
     margin: 0;
     padding-top: 5px;
-    background: #272b2c;
+    background: var(--bkgd-main);
 }
 
 vr {
@@ -23,7 +32,7 @@ vr {
 button {
     outline: none;
     border: none;
-    color: #fff;
+    color: var(--text);
     background: transparent;
     transform: translateX(5px);
     transition: 200ms;
@@ -40,20 +49,20 @@ li {
 
 .special-btn {
     font-family: "Poppins";
-    box-shadow: inset 0 0 0 0 #aaccf4;
-    color: #aaccf4;
+    box-shadow: inset 0 0 0 0 var(--text-more-accent);
+    color: var(--text-more-accent);
     transition: color 300ms ease-in-out, box-shadow 300ms ease-in-out;
     font-weight: bold;
 }
 
 .special-btn:hover {
     transform: translateX(5px);
-    box-shadow: inset 120px 0 0 0 #aaccf4;
-    color: #272b2c;
+    box-shadow: inset 120px 0 0 0 var(--text-more-accent);
+    color: var(--bkgd-main);
 }
 
 .nodata {
-    color: #fff;
+    color: var(--text);
     margin-left: 20px;
 }
 
@@ -64,14 +73,14 @@ li {
 
 #web-list::-webkit-scrollbar-track,
 #json-list::-webkit-scrollbar-track {
-    background: #272b2c;
+    background: var(--bkgd-main);
 }
 
 #web-list::-webkit-scrollbar-thumb,
 #json-list::-webkit-scrollbar-thumb {
     background-color: #708090;
     border-radius: 20px;
-    border: 3.5px solid #272b2c;
+    border: 3.5px solid var(--bkgd-main);
 }
 
 #web-list {
@@ -88,7 +97,7 @@ li {
     height: 25px;
     margin-bottom: 10px;
     margin-right: 5px;
-    border-bottom: 2px solid #aaccf4;
+    border-bottom: 2px solid var(--text-more-accent);
     background: #4d5256;
     border-radius: 5px;
     box-shadow: #ffffff88 0px 4px 6px;
@@ -111,7 +120,7 @@ li {
 
 .entry>a {
     text-decoration: none;
-    color: #fff;
+    color: var(--text);
     width: 190px;
     margin: 0;
     padding: 0;
@@ -128,7 +137,7 @@ li {
 }
 
 .entry>a:hover {
-    color: #71d4fe;
+    color: var(--text-accent);
     cursor: pointer;
     transform: translateY(-2px);
 }
@@ -142,7 +151,7 @@ li {
 .title {
     margin-left: 5px;
     font-size: 20px;
-    color: #fff;
+    color: var(--text);
     font-family: 'Poppins';
     white-space: nowrap;
     font-weight: bold;
@@ -159,8 +168,8 @@ li {
 }
 
 #header {
-    background: #2f3336;
-    color: #fff;
+    background: var(--bkgd-accent);
+    color: var(--text);
     display: flex;
 }
 
@@ -179,7 +188,7 @@ li {
 }
 
 #body {
-    background: #272b2c;
+    background: var(--bkgd-main);
     width: 100%;
     height: 85px;
     display: flex;
@@ -197,7 +206,7 @@ li {
     width: 100%;
     text-align: center;
     margin: 0px;
-    color: #fff;
+    color: var(--text);
     font-family: "Poppins";
 }
 
@@ -205,7 +214,7 @@ li {
     width: 100%;
     text-align: center;
     margin: 0px;
-    color: #aaccf4;
+    color: var(--text-more-accent);
     font-weight: bold;
     font-family: "Poppins";
 }
@@ -220,7 +229,7 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #272b2c;
+    background: var(--bkgd-main);
 }
 
 .row {
@@ -232,8 +241,8 @@ li {
     font-size: 10px;
     width: 20px;
     height: 20px;
-    color: #71d4fe;
-    background: #2f3336;
+    color: var(--text-accent);
+    background: var(--bkgd-accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,7 +281,7 @@ li {
 }
 
 .stats {
-    background: #272b2c;
+    background: var(--bkgd-main);
     width: 100%;
     height: 55px;
     padding-top: 10px;
@@ -293,7 +302,7 @@ li {
 }
 
 .stats-value.bottom {
-    color: #71d4fe;
+    color: var(--text-accent);
 }
 
 #footer {
@@ -305,11 +314,11 @@ li {
     padding-bottom: 3px;
     position: absolute;
     width: 100%;
-    background: #2f3336;
+    background: var(--bkgd-accent);
 }
 
 #footer>span {
-    color: #fff;
+    color: var(--text);
     cursor: pointer;
 }
 
@@ -319,7 +328,7 @@ li {
     width: 150px;
     text-align: center;
     cursor: pointer;
-    color: #fff;
+    color: var(--text);
     transition: 200ms;
 }
 
@@ -333,7 +342,7 @@ li {
 }
 
 #more-info {
-    background: #272b2c;
+    background: var(--bkgd-main);
     width: 100%;
     height: 360px;
     bottom: 0;
@@ -354,7 +363,7 @@ li {
     float: left;
     width: 190;
     margin: 0;
-    color: #aaccf4;
+    color: var(--text-more-accent);
     font-weight: bold;
     margin-left: 5px;
     font-family: "Poppins";
@@ -380,16 +389,16 @@ li {
 }
 
 .jsonkey {
-    color: #71d4fe;
+    color: var(--text-accent);
 }
 
 .jsonvalue {
-    color: #fff;
+    color: var(--text);
     overflow-x: hidden;
 }
 
 #typingtest {
-    background: #272b2c;
+    background: var(--bkgd-main);
     width: 100%;
     height: 100%;
     top: 0;
@@ -412,7 +421,7 @@ li {
 #type-header {
     top: 0px;
     position: sticky;
-    background: #272b2c;
+    background: var(--bkgd-main);
     box-shadow: #000000d0 0px 8px 24px;
     margin-bottom: 10px;
     z-index: 1;
@@ -420,7 +429,7 @@ li {
 
 #top {
     font-family: "Poppins";
-    color: #fff;
+    color: var(--text);
     display: flex;
     justify-content: center;
 }
@@ -434,7 +443,7 @@ li {
 
 #content {
     font-family: "Poppins";
-    color: #fff;
+    color: var(--text);
     margin: 10px;
     background: #5f6368;
     padding: 5px;
@@ -464,7 +473,7 @@ li {
 
 #redo {
     background: #708090;
-    color: #aaccf4;
+    color: var(--text-more-accent);
     transform: translateX(0px);
     width: 55px;
     outline: none;
@@ -483,8 +492,8 @@ li {
 }
 
 .highlight {
-    color: #71d4fe;
-    text-shadow: 1px 0px 0px #71d4fe;
+    color: var(--text-accent);
+    text-shadow: 1px 0px 0px var(--text-accent);
 }
 
 .correct {
@@ -518,10 +527,10 @@ li {
     height: 150px;
     margin-bottom: 10px;
     border-radius: 10px;
-    border-bottom: #71d4fe solid 5px;
+    border-bottom: var(--text-accent) solid 5px;
     transition: 200ms;
 }
 
 .graph:hover {
-    border-bottom: #aaccf4 solid 5px;
+    border-bottom: var(--text-more-accent) solid 5px;
 }
