@@ -19,6 +19,11 @@
 */
 
 
+
+const style = getComputedStyle(document.body);
+
+
+
 const settings = document.getElementById("settings");
 const settingsviewer = document.getElementById("settings-viewer");
 const settingsback = document.getElementById("settings-back");
@@ -367,8 +372,6 @@ async function getCurrentTab() {
 
 settings.addEventListener("click", function() {
     settingsviewer.style.transform = "translateY(0px)";
-
-    var style = getComputedStyle(document.body)
 
     document.getElementById("text2").value = style.getPropertyValue('--text');
     document.getElementById("text-accent").value = style.getPropertyValue('--text-accent');
