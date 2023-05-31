@@ -507,12 +507,15 @@ li {
     margin-left: 3px;
     margin-right: 3px;
     cursor: pointer;
+    margin-bottom: 10px;
+    transition: 200ms;
 }
 
 #content {
     font-family: "Poppins";
     color: var(--text);
     margin: 10px;
+    margin-top: none;
     background: var(--bkgd-more-accent);
     padding: 5px;
     border-radius: 5px;

@@ -150,18 +150,31 @@ async function goTo(site) {
     viewer.style.transform = "translateX(0px)";
 }
 
-var wpmlength = 10;
+var wpmlength = 0;
 var progress = 0;
 var correct = 0;
 var incorrect = [];
 var starttime = 0;
 
 function setLength(len) {
+    if(wpmlength != 0) {
+        const preWords = document.getElementById("word-"+wpmlength);
+        preWords.style.fontSize = "12px";
+        preWords.style.marginBottom = "10px";
+    }
     wpmlength = len;
+
+    const postWords = document.getElementById("word-"+wpmlength);
+    postWords.style.fontSize = "15px";
+    postWords.style.marginBottom = "0px";
     redoWPM();
 }
 
 function redoWPM() {
+    if (wpmlength == 0) {
+        setLength('10');
+    }
+
     progress = 0;
     correct = 0;
     incorrect = [];
