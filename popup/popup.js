@@ -180,6 +180,7 @@ function redoWPM() {
     document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
 }
 
+var xyRawWPMValues = [];
 var xyWPMValues = [];
 var xyACCValues = [];
 var valCount = 1;
@@ -229,8 +230,43 @@ function highlightNext(word) {
             `;
         }
 
-        xyWPMValues.push({ x: Number(valCount), y: Number(wpm.innerHTML) });
         NumLabels.push(valCount);
+
+        xyRawWPMValues.push({ x: Number(valCount), y: Number(rawwpm.innerHTML) });
+
+        new Chart("wpmprogresschart", {
+            type: "line",
+            data: {
+                labels: NumLabels,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#71d4fe",
+                    borderColor: "#71d4fe88",
+                    data: xyWPMValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                scales: {
+                    yAxes: [{
+                        ticks: {min: 0},
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'WPM'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Test #'
+                        }
+                    }]
+                }
+            }
+        });
+
+        xyWPMValues.push({ x: Number(valCount), y: Number(wpm.innerHTML) });
 
         new Chart("wpmprogresschart", {
         type: "line",
