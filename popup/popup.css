@@ -189,14 +189,9 @@ input:checked+.slider:before {
     transition: 200ms;
 }
 
-.colorpicker:focus {
-    margin-left: 5px;
-}
-
 #returntodefault {
     transform: translateX(0px);
     transition: 200ms;
-    margin-top: 10px;
 }
 
 #returntodefault:hover {
