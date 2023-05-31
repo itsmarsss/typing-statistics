@@ -68,6 +68,7 @@ li {
 }
 
 .settings-title {
+    font-family: "Poppins";
     margin: 0;
     padding: 0;
     color: var(--text);
@@ -80,17 +81,25 @@ li {
 }
 
 .tab {
+    font-family: "Poppins";
     color: var(--text);
     width: 50%;
     text-align: center;
     margin: 0px;
-    text-decoration: underline;
     cursor: pointer;
     transition: 200ms;
 }
 
 .tab:hover {
-    transform: translateY(-3px);
+    filter: none;
+}
+
+#general {
+    text-decoration: bold;
+}
+
+#theme {
+    filter: blur(1px);
 }
 
 #settings-container {

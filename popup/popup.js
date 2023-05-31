@@ -245,54 +245,7 @@ async function logSettings() {
 
     document.getElementById("other").value = config.theme.other || style.getPropertyValue('--other');
 
-    const enabled = document.getElementById("ext-enabled").checked;
-
-    const text = document.getElementById("text2").value;
-    const text_accent = document.getElementById("text-accent").value;
-    const text_more_accent = document.getElementById("text-more-accent").value;
-
-    const bkgd_main = document.getElementById("bkgd-main").value;
-    const bkgd_accent = document.getElementById("bkgd-accent").value;
-    const bkgd_more_accent = document.getElementById("bkgd-more-accent").value;
-
-    const other = document.getElementById("other").value;
-
-
-    document.documentElement.style.setProperty('--text', text);
-    document.documentElement.style.setProperty('--text-accent', text_accent);
-    document.documentElement.style.setProperty('--text-more-accent', text_more_accent);
-
-    document.documentElement.style.setProperty('--bkgd-main', bkgd_main);
-    document.documentElement.style.setProperty('--bkgd-accent', bkgd_accent);
-    document.documentElement.style.setProperty('--bkgd-more-accent', bkgd_more_accent);
-
-    document.documentElement.style.setProperty('--other', other);
-
-    const body = {
-        general: {
-            enabled: enabled
-        },
-        theme: {
-            text: text,
-            text_accent: text_accent,
-            text_more_accent: text_more_accent,
-
-            bkgd_main: bkgd_main,
-            bkgd_accent: bkgd_accent,
-            bkgd_more_accent: bkgd_more_accent,
-
-            other: other
-        }
-    }
-
-    await setSettings(body);
-
-    if (!body.general.enabled) {
-        chrome.action.setIcon({ path: "../assets/typing-statistics-disabled.png" });
-    } else {
-        chrome.action.setIcon({ path: "../assets/typing-statistics.png" });
-    }
-
+    Chart.defaults.global.defaultFontColor = config.theme.text || style.getPropertyValue('--text');
 }
 
 var xyRawWPMValues = [];
@@ -662,6 +615,8 @@ settingsback.addEventListener("click", async function () {
 
     const other = document.getElementById("other").value;
 
+    Chart.defaults.global.defaultFontColor = text;
+
 
     document.documentElement.style.setProperty('--text', text);
     document.documentElement.style.setProperty('--text-accent', text_accent);
@@ -704,6 +659,12 @@ settingsback.addEventListener("click", async function () {
 general.addEventListener("click", function () {
     settingscont.style.transform = "rotateY(0deg)";
 
+    general.style.filter = "none";
+    theme.style.filter = "blur(1px)";
+
+    general.style.textDecoration = "bold";
+    theme.style.textDecoration = "none";
+
     setTimeout(function () {
         colorpickers.style.display = "none";
         choices.style.display = "block";
@@ -712,6 +673,12 @@ general.addEventListener("click", function () {
 
 theme.addEventListener("click", function () {
     settingscont.style.transform = "rotateY(180deg)";
+
+    general.style.filter = "blur(1px)";
+    theme.style.filter = "none";
+
+    general.style.textDecoration = "none";
+    theme.style.textDecoration = "bold";
 
     setTimeout(function () {
         colorpickers.style.display = "block";
@@ -924,8 +891,6 @@ for (let i = 0; i < entries.length; i++) {
         goTo(entry.dataset.url);
     });
 }
-
-Chart.defaults.global.defaultFontColor = "#fff";
 
 logSettings();
 
