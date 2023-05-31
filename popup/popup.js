@@ -186,7 +186,7 @@ var xyACCValues = [];
 var valCount = 1;
 var NumLabels = [];
 
-new Chart("wpmprogresschart", {
+new Chart("rawwpmprogresschart", {
     type: "line",
     data: {
         labels: NumLabels,
@@ -195,7 +195,7 @@ new Chart("wpmprogresschart", {
             lineTension: 0,
             backgroundColor: "#71d4fe",
             borderColor: "#71d4fe88",
-            data: xyWPMValues
+            data: xyRawWPMValues
         }]
     },
     options: {
@@ -205,7 +205,7 @@ new Chart("wpmprogresschart", {
                 ticks: { min: 0 },
                 scaleLabel: {
                     display: true,
-                    labelString: 'WPM'
+                    labelString: 'Raw WPM'
                 }
             }],
             xAxes: [{
@@ -330,7 +330,7 @@ function highlightNext(word) {
 
         xyRawWPMValues.push({ x: Number(valCount), y: Number(rawwpm.innerHTML) });
 
-        new Chart("wpmprogresschart", {
+        new Chart("rawwpmprogresschart", {
             type: "line",
             data: {
                 labels: NumLabels,
@@ -339,7 +339,7 @@ function highlightNext(word) {
                     lineTension: 0,
                     backgroundColor: "#71d4fe",
                     borderColor: "#71d4fe88",
-                    data: xyWPMValues
+                    data: xyRawWPMValues
                 }]
             },
             options: {
@@ -349,7 +349,7 @@ function highlightNext(word) {
                         ticks: { min: 0 },
                         scaleLabel: {
                             display: true,
-                            labelString: 'WPM'
+                            labelString: 'Raw WPM'
                         }
                     }],
                     xAxes: [{
