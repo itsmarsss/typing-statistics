@@ -35,6 +35,7 @@ const colorpickers = document.getElementById("colorpickers");
 const settingscont = document.getElementById("settings-container");
 const settingsback = document.getElementById("settings-back");
 const returntodefault = document.getElementById("returntodefault");
+const resetall = document.getElementById("reset-all");
 
 
 
@@ -117,6 +118,16 @@ function getTypeData(site) {
 
                 resolve();
             }
+        });
+    });
+}
+
+function removeTypeData(site) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.remove(site, function () {
+            console.log(`Key "${site}" has been removed`);
+
+            resolve();
         });
     });
 }
@@ -693,6 +704,20 @@ theme.addEventListener("click", function () {
         colorpickers.style.display = "block";
         choices.style.display = "none";
     }, 100);
+});
+
+resetall.addEventListener("click", async function () {
+    console.log("Reset requested");
+
+    const sites = await getSiteList();
+
+    for (let i in sites.sites) {
+        await removeTypeData(sites.sites[i].url);
+    }
+
+    await removeTypeData("sitelist");
+
+    weblist.innerHTML = "";
 });
 
 returntodefault.addEventListener("click", function () {
