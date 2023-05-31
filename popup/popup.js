@@ -246,6 +246,16 @@ async function logSettings() {
     document.getElementById("other").value = config.theme.other || style.getPropertyValue('--other');
 
     Chart.defaults.global.defaultFontColor = config.theme.text || style.getPropertyValue('--text');
+
+    document.documentElement.style.setProperty('--text', config.theme.text || style.getPropertyValue('--text'));
+    document.documentElement.style.setProperty('--text-accent', config.theme.text_accent || style.getPropertyValue('--text-accent'));
+    document.documentElement.style.setProperty('--text-more-accent', config.theme.text_more_accent || style.getPropertyValue('--text-more-accent'));
+
+    document.documentElement.style.setProperty('--bkgd-main', config.theme.bkgd_main || style.getPropertyValue('--bkgd-main'));
+    document.documentElement.style.setProperty('--bkgd-accent', config.theme.bkgd_accent || style.getPropertyValue('--bkgd-accent'));
+    document.documentElement.style.setProperty('--bkgd-more-accent', config.theme.bkgd_more_accent || style.getPropertyValue('--bkgd-more-accent'));
+
+    document.documentElement.style.setProperty('--other', config.theme.other || style.getPropertyValue('--other'));
 }
 
 var xyRawWPMValues = [];
@@ -616,7 +626,6 @@ settingsback.addEventListener("click", async function () {
     const other = document.getElementById("other").value;
 
     Chart.defaults.global.defaultFontColor = text;
-
 
     document.documentElement.style.setProperty('--text', text);
     document.documentElement.style.setProperty('--text-accent', text_accent);
