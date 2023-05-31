@@ -191,7 +191,7 @@ new Chart("rawwpmprogresschart", {
     data: {
         labels: NumLabels,
         datasets: [{
-            fill: false,
+            fill: true,
             lineTension: 0,
             backgroundColor: "#71d4fe",
             borderColor: "#71d4fe88",
@@ -223,7 +223,7 @@ new Chart("wpmprogresschart", {
     data: {
         labels: NumLabels,
         datasets: [{
-            fill: false,
+            fill: true,
             lineTension: 0,
             backgroundColor: "#71d4fe",
             borderColor: "#71d4fe88",
@@ -255,7 +255,7 @@ new Chart("accprogresschart", {
     data: {
         labels: NumLabels,
         datasets: [{
-            fill: false,
+            fill: true,
             lineTension: 0,
             backgroundColor: "#71d4fe",
             borderColor: "#71d4fe88",
@@ -335,7 +335,7 @@ function highlightNext(word) {
             data: {
                 labels: NumLabels,
                 datasets: [{
-                    fill: false,
+                    fill: true,
                     lineTension: 0,
                     backgroundColor: "#71d4fe",
                     borderColor: "#71d4fe88",
@@ -369,7 +369,7 @@ function highlightNext(word) {
             data: {
                 labels: NumLabels,
                 datasets: [{
-                    fill: false,
+                    fill: true,
                     lineTension: 0,
                     backgroundColor: "#71d4fe",
                     borderColor: "#71d4fe88",
@@ -403,7 +403,7 @@ function highlightNext(word) {
             data: {
                 labels: NumLabels,
                 datasets: [{
-                    fill: false,
+                    fill: true,
                     lineTension: 0,
                     backgroundColor: "#71d4fe",
                     borderColor: "#71d4fe88",
@@ -431,6 +431,11 @@ function highlightNext(word) {
         });
 
         valCount += 1;
+
+        document.getElementById("upper").scrollIntoView({
+            top: 0,
+            behavior: "smooth"
+        });
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
