@@ -178,6 +178,7 @@ li {
     color: var(--text);
     margin: 0;
     padding: 0;
+    max-width: 175px;
     overflow: hidden;
     float: left;
     transition: 200ms;
