@@ -186,6 +186,102 @@ var xyACCValues = [];
 var valCount = 1;
 var NumLabels = [];
 
+new Chart("wpmprogresschart", {
+    type: "line",
+    data: {
+        labels: NumLabels,
+        datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "#71d4fe",
+            borderColor: "#71d4fe88",
+            data: xyWPMValues
+        }]
+    },
+    options: {
+        legend: { display: false },
+        scales: {
+            yAxes: [{
+                ticks: { min: 0 },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'WPM'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Test #'
+                }
+            }]
+        }
+    }
+});
+
+new Chart("wpmprogresschart", {
+    type: "line",
+    data: {
+        labels: NumLabels,
+        datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "#71d4fe",
+            borderColor: "#71d4fe88",
+            data: xyWPMValues
+        }]
+    },
+    options: {
+        legend: { display: false },
+        scales: {
+            yAxes: [{
+                ticks: { min: 0 },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'WPM'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Test #'
+                }
+            }]
+        }
+    }
+});
+
+new Chart("accprogresschart", {
+    type: "line",
+    data: {
+        labels: NumLabels,
+        datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "#71d4fe",
+            borderColor: "#71d4fe88",
+            data: xyACCValues
+        }]
+    },
+    options: {
+        legend: { display: false },
+        scales: {
+            yAxes: [{
+                ticks: { min: 0, max: 100 },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Accuracy'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Test #'
+                }
+            }]
+        }
+    }
+});
+
 function highlightNext(word) {
     if (progress >= wpmlength) {
         return;
@@ -212,7 +308,7 @@ function highlightNext(word) {
     if (progress == wpmlength) {
         rawwpm.innerHTML = Math.round(60000 / ((Date.now() - starttime) / wpmlength));
         acc.innerHTML = Math.round((correct / wpmlength) * 100);
-        wpm.innerHTML = Math.round(rawwpm.innerHTML * (acc.innerHTML/100));
+        wpm.innerHTML = Math.round(rawwpm.innerHTML * (acc.innerHTML / 100));
 
         incorrectlist.innerHTML = "";
 
@@ -247,10 +343,10 @@ function highlightNext(word) {
                 }]
             },
             options: {
-                legend: {display: false},
+                legend: { display: false },
                 scales: {
                     yAxes: [{
-                        ticks: {min: 0},
+                        ticks: { min: 0 },
                         scaleLabel: {
                             display: true,
                             labelString: 'WPM'
@@ -269,35 +365,35 @@ function highlightNext(word) {
         xyWPMValues.push({ x: Number(valCount), y: Number(wpm.innerHTML) });
 
         new Chart("wpmprogresschart", {
-        type: "line",
-        data: {
-            labels: NumLabels,
-            datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "#71d4fe",
-                borderColor: "#71d4fe88",
-                data: xyWPMValues
-            }]
-        },
-        options: {
-            legend: {display: false},
-            scales: {
-                yAxes: [{
-                    ticks: {min: 0},
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'WPM'
-                    }
-                }],
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Test #'
-                    }
+            type: "line",
+            data: {
+                labels: NumLabels,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#71d4fe",
+                    borderColor: "#71d4fe88",
+                    data: xyWPMValues
                 }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    yAxes: [{
+                        ticks: { min: 0 },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'WPM'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Test #'
+                        }
+                    }]
+                }
             }
-        }
         });
 
         xyACCValues.push({ x: Number(valCount), y: Number(acc.innerHTML) });
@@ -315,10 +411,10 @@ function highlightNext(word) {
                 }]
             },
             options: {
-                legend: {display: false},
+                legend: { display: false },
                 scales: {
                     yAxes: [{
-                        ticks: {min: 0, max: 100},
+                        ticks: { min: 0, max: 100 },
                         scaleLabel: {
                             display: true,
                             labelString: 'Accuracy'
@@ -330,11 +426,11 @@ function highlightNext(word) {
                             labelString: 'Test #'
                         }
                     }]
-                } 
+                }
             }
-            });
+        });
 
-            valCount += 1;
+        valCount += 1;
     } else {
         document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
     }
@@ -407,7 +503,7 @@ async function getCurrentTab() {
     return tab;
 }
 
-settings.addEventListener("click", function() {
+settings.addEventListener("click", function () {
     settingsviewer.style.transform = "translateY(0px)";
 
     document.getElementById("text2").value = style.getPropertyValue('--text');
@@ -421,7 +517,7 @@ settings.addEventListener("click", function() {
     document.getElementById("other").value = style.getPropertyValue('--other');
 });
 
-settingsback.addEventListener("click", function(){
+settingsback.addEventListener("click", function () {
     settingsviewer.style.transform = "translateY(-500px)";
     document.documentElement.style.setProperty('--text', document.getElementById("text2").value);
     document.documentElement.style.setProperty('--text-accent', document.getElementById("text-accent").value);
@@ -434,7 +530,7 @@ settingsback.addEventListener("click", function(){
     document.documentElement.style.setProperty('--other', document.getElementById("other").value);
 });
 
-returntodefault.addEventListener("click", function(){
+returntodefault.addEventListener("click", function () {
     document.getElementById("text2").value = style.getPropertyValue('--text-default');
     document.getElementById("text-accent").value = style.getPropertyValue('--text-accent-default');
     document.getElementById("text-more-accent").value = style.getPropertyValue('--text-more-accent-default');
