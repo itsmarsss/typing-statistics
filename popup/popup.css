@@ -167,9 +167,9 @@ li {
     height: 12px;
     width: 12px;
     float: left;
+    margin-top: 2px;
     margin-right: 5px;
     margin-left: 5px;
-    transform: translateY(4px);
     border-radius: 50%;
 }
 
