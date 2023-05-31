@@ -138,6 +138,36 @@ function getSpecialTypeData(site) {
     });
 }
 
+function getSettings() {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get(["settings"], (result) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            } else {
+                console.log("Settings queried");
+
+                const config = JSON.parse(result.settings || "{}");
+
+                console.log(config);
+
+                resolve(config);
+            }
+        });
+    });
+}
+
+function setSettings(config) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.set({ settings: JSON.stringify(config) }, () => {
+            console.log("Settings updated");
+
+            console.log(config);
+
+            resolve();
+        });
+    });
+}
+
 var tabdata = {};
 
 async function goTo(site) {
@@ -164,14 +194,14 @@ var incorrect = [];
 var starttime = 0;
 
 function setLength(len) {
-    if(wpmlength != 0) {
-        const preWords = document.getElementById("word-"+wpmlength);
+    if (wpmlength != 0) {
+        const preWords = document.getElementById("word-" + wpmlength);
         preWords.style.fontSize = "12px";
         preWords.style.marginBottom = "10px";
     }
     wpmlength = len;
 
-    const postWords = document.getElementById("word-"+wpmlength);
+    const postWords = document.getElementById("word-" + wpmlength);
     postWords.style.fontSize = "15px";
     postWords.style.marginBottom = "0px";
     redoWPM();
@@ -536,31 +566,74 @@ async function getCurrentTab() {
     return tab;
 }
 
-settings.addEventListener("click", function () {
+settings.addEventListener("click", async function () {
+    const config = await getSettings();
+
+    document.getElementById("ext-enabled").checked = config.general.enabled || true;
+
+    document.getElementById("text2").value = config.theme.text || style.getPropertyValue('--text');
+    document.getElementById("text-accent").value = config.theme.text_accent || style.getPropertyValue('--text-accent');
+    document.getElementById("text-more-accent").value = config.theme.text_more_accent || style.getPropertyValue('--text-more-accent');
+
+    document.getElementById("bkgd-main").value = config.theme.bkgd_main || style.getPropertyValue('--bkgd-main');
+    document.getElementById("bkgd-accent").value = config.theme.bkgd_accent || style.getPropertyValue('--bkgd-accent');
+    document.getElementById("bkgd-more-accent").value = config.theme.bkgd_more_accent || style.getPropertyValue('--bkgd-more-accent');
+
+    document.getElementById("other").value = config.theme.other || style.getPropertyValue('--other');
+
     settingsviewer.style.transform = "translateY(0px)";
-
-    document.getElementById("text2").value = style.getPropertyValue('--text');
-    document.getElementById("text-accent").value = style.getPropertyValue('--text-accent');
-    document.getElementById("text-more-accent").value = style.getPropertyValue('--text-more-accent');
-
-    document.getElementById("bkgd-main").value = style.getPropertyValue('--bkgd-main');
-    document.getElementById("bkgd-accent").value = style.getPropertyValue('--bkgd-accent');
-    document.getElementById("bkgd-more-accent").value = style.getPropertyValue('--bkgd-more-accent');
-
-    document.getElementById("other").value = style.getPropertyValue('--other');
 });
 
-settingsback.addEventListener("click", function () {
+settingsback.addEventListener("click", async function () {
+    const enabled = document.getElementById("ext-enabled").checked;
+
+    const text = document.getElementById("text2").value;
+    const text_accent = document.getElementById("text-accent").value;
+    const text_more_accent = document.getElementById("text-more-accent").value;
+
+    const bkgd_main = document.getElementById("bkgd-main").value;
+    const bkgd_accent = document.getElementById("bkgd-accent").value;
+    const bkgd_more_accent = document.getElementById("bkgd-more-accent").value;
+
+    const other = document.getElementById("other").value;
+
+
+    document.documentElement.style.setProperty('--text', text);
+    document.documentElement.style.setProperty('--text-accent', text_accent);
+    document.documentElement.style.setProperty('--text-more-accent', text_more_accent);
+
+    document.documentElement.style.setProperty('--bkgd-main', bkgd_main);
+    document.documentElement.style.setProperty('--bkgd-accent', bkgd_accent);
+    document.documentElement.style.setProperty('--bkgd-more-accent', bkgd_more_accent);
+
+    document.documentElement.style.setProperty('--other', other);
+
+    const body = {
+        general: {
+            enabled: enabled
+        },
+        theme: {
+            text: text,
+            text_accent: text_accent,
+            text_more_accent: text_more_accent,
+
+            bkgd_main: bkgd_main,
+            bkgd_accent: bkgd_accent,
+            bkgd_more_accent: bkgd_more_accent,
+
+            other: other
+        }
+    }
+
+    await setSettings(body);
+
+    if (!body.general.enabled) {
+        chrome.action.setIcon({ path: "../assets/typing-statistics-disabled.png" });
+    } else {
+        chrome.action.setIcon({ path: "../assets/typing-statistics.png" });
+    }
+
     settingsviewer.style.transform = "translateY(-500px)";
-    document.documentElement.style.setProperty('--text', document.getElementById("text2").value);
-    document.documentElement.style.setProperty('--text-accent', document.getElementById("text-accent").value);
-    document.documentElement.style.setProperty('--text-more-accent', document.getElementById("text-more-accent").value);
-
-    document.documentElement.style.setProperty('--bkgd-main', document.getElementById("bkgd-main").value);
-    document.documentElement.style.setProperty('--bkgd-accent', document.getElementById("bkgd-accent").value);
-    document.documentElement.style.setProperty('--bkgd-more-accent', document.getElementById("bkgd-more-accent").value);
-
-    document.documentElement.style.setProperty('--other', document.getElementById("other").value);
 });
 
 general.addEventListener("click", function () {
