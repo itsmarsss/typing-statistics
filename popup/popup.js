@@ -193,8 +193,8 @@ new Chart("rawwpmprogresschart", {
         datasets: [{
             fill: true,
             lineTension: 0,
-            backgroundColor: "#71d4fe",
-            borderColor: "#71d4fe88",
+            backgroundColor: "#71d4fe50",
+            borderColor: "#71d4fe",
             data: xyRawWPMValues
         }]
     },
@@ -225,8 +225,8 @@ new Chart("wpmprogresschart", {
         datasets: [{
             fill: true,
             lineTension: 0,
-            backgroundColor: "#71d4fe",
-            borderColor: "#71d4fe88",
+            backgroundColor: "#71d4fe50",
+            borderColor: "#71d4fe",
             data: xyWPMValues
         }]
     },
@@ -257,8 +257,8 @@ new Chart("accprogresschart", {
         datasets: [{
             fill: true,
             lineTension: 0,
-            backgroundColor: "#71d4fe",
-            borderColor: "#71d4fe88",
+            backgroundColor: "#71d4fe50",
+            borderColor: "#71d4fe",
             data: xyACCValues
         }]
     },
@@ -337,8 +337,8 @@ function highlightNext(word) {
                 datasets: [{
                     fill: true,
                     lineTension: 0,
-                    backgroundColor: "#71d4fe",
-                    borderColor: "#71d4fe88",
+                    backgroundColor: "#71d4fe50",
+                    borderColor: "#71d4fe",
                     data: xyRawWPMValues
                 }]
             },
@@ -371,8 +371,8 @@ function highlightNext(word) {
                 datasets: [{
                     fill: true,
                     lineTension: 0,
-                    backgroundColor: "#71d4fe",
-                    borderColor: "#71d4fe88",
+                    backgroundColor: "#71d4fe50",
+                    borderColor: "#71d4fe",
                     data: xyWPMValues
                 }]
             },
@@ -405,8 +405,8 @@ function highlightNext(word) {
                 datasets: [{
                     fill: true,
                     lineTension: 0,
-                    backgroundColor: "#71d4fe",
-                    borderColor: "#71d4fe88",
+                    backgroundColor: "#71d4fe50",
+                    borderColor: "#71d4fe",
                     data: xyACCValues
                 }]
             },
