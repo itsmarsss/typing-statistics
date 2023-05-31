@@ -724,7 +724,7 @@ try {
         <img class="site-icon" src="${imgurl}">
         <h4>${sitelist.sites[i].url}</h4>
     </a>
-    <button class="entry-btn" data-url="${sitelist.sites[i].url}">&rarr;</button>
+    <button class="entry-btn" data-url="${sitelist.sites[i].url}">View &rarr;</button>
 </div>
         `;
     }
