@@ -24,9 +24,10 @@ var typingstatistics = (function () {
         length += 1;
 
         if (key === " ") {
+            length = 0;
             if ((last_space === -1) || (Date.now() - last_space > 5000)) {
                 last_space = Date.now();
-            } else {
+            } else if (length > 2) {
                 if (!("words" in tabdata)) {
                     tabdata["words"] = 0;
                 }
@@ -37,9 +38,8 @@ var typingstatistics = (function () {
                 } else {
                     tabdata.avgtime = ((tabdata.avgtime * (tabdata.words - 1) + (Date.now() - last_space)) / tabdata.words);
                 }
-                console.log(Date.now() - last_space);
+                // console.log(Date.now() - last_space);
 
-                length = 0;
                 last_space = Date.now();
             }
         }
@@ -69,8 +69,8 @@ var typingstatistics = (function () {
             }
 
             await setSiteList(sitelist);
-            console.log("Afters:");
-            console.log(await getSiteList());
+            // console.log("Afters:");
+            // console.log(await getSiteList());
         } catch (error) {
             console.error(error);
         }
@@ -90,13 +90,13 @@ var typingstatistics = (function () {
                 if (chrome.runtime.lastError) {
                     reject(chrome.runtime.lastError);
                 } else {
-                    console.log(`TabData for "${site}" queried`);
+                    // console.log(`TabData for "${site}" queried`);
 
                     tabdata = JSON.parse(result[site] || "{}");
                     tabdata["site"] = site;
 
-                    console.log("Before");
-                    console.log(tabdata);
+                    // console.log("Before");
+                    // console.log(tabdata);
 
                     resolve();
                 }
@@ -107,10 +107,10 @@ var typingstatistics = (function () {
     function setTypeData(site) {
         return new Promise((resolve, reject) => {
             chrome.storage.local.set({ [site]: JSON.stringify(tabdata) }, () => {
-                console.log(`TypeData for "${site}" set`);
+                // console.log(`TypeData for "${site}" set`);
 
-                console.log("After");
-                console.log(tabdata);
+                // console.log("After");
+                // console.log(tabdata);
 
                 resolve();
             });
@@ -120,12 +120,12 @@ var typingstatistics = (function () {
     function getSiteList() {
         return new Promise((resolve, reject) => {
             chrome.storage.local.get(["sitelist"], (result) => {
-                console.log("SiteList queried");
+                // console.log("SiteList queried");
 
                 const sitelist = JSON.parse(result.sitelist || '{"sites": []}');
 
-                console.log("Before");
-                console.log(sitelist);
+                // console.log("Before");
+                // console.log(sitelist);
 
                 resolve(sitelist);
             });
@@ -135,10 +135,10 @@ var typingstatistics = (function () {
     function setSiteList(sitelist) {
         return new Promise((resolve, reject) => {
             chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, () => {
-                console.log("SiteList set");
+                // console.log("SiteList set");
 
-                console.log("After");
-                console.log(sitelist);
+                // console.log("After");
+                // console.log(sitelist);
 
                 resolve();
             });
