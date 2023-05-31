@@ -163,6 +163,18 @@ input:checked + .slider:before {
     transform: translateX(22.5px);
 }
 
+#reset-all {
+    background: #ff0000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+#reset-all:active {
+    transform: translateX(2px);
+}
+
 #colorpickers{
     padding-left: 5px;
 }
