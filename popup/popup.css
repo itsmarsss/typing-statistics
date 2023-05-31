@@ -73,6 +73,85 @@ li {
     color: var(--text);
 }
 
+#tabs {
+    width: 100%;
+    height: 25px;
+    display: flex;
+}
+
+.tab {
+    color: var(--text);
+    width: 50%;
+    text-align: center;
+    margin: 0px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.tab:hover {
+    transform: translateY(-3px);
+}
+
+#choices {
+    position: absolute;
+}
+
+#colorpickers {
+    transform: rotateX(90deg);
+    position: absolute;
+}
+
+.switch {
+    font-size: 11.5px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+   
+.switch input {
+    opacity: 1;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    background: var(--text);
+    transition: 400ms;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+   
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    border-radius: 16px;
+    left: 1.2px;
+    top: 0;
+    bottom: 0;
+    background: var(--text);
+    box-shadow: 0 2px 5px #999999;
+    transition: 400ms;
+}
+   
+input:checked + .slider {
+    background: var(--text-accent);
+    border: 1px solid transparent;
+}
+   
+input:checked + .slider:before {
+    transform: translateX(22.5px);
+}
+
 #colorpickers{
     padding-left: 5px;
 }
@@ -133,7 +212,7 @@ li {
 
 #web-list::-webkit-scrollbar-thumb,
 #json-list::-webkit-scrollbar-thumb {
-    background-color: var(--other);
+    background: var(--other);
     border-radius: 20px;
     border: 3.5px solid var(--bkgd-main);
 }
