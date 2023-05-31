@@ -93,12 +93,23 @@ li {
     transform: translateY(-3px);
 }
 
+#settings-container {
+    margin-left: 10px;
+    padding: 10px;
+    width: 210px;
+    background: var(--other);
+    height: 298px;
+    border-radius: 10px;
+    transition: 300ms;
+}
+
 #choices {
     position: absolute;
 }
 
 #colorpickers {
-    transform: rotateX(90deg);
+    transform: rotateY(180deg);
+    display: none;
     position: absolute;
 }
 
@@ -159,10 +170,10 @@ input:checked + .slider:before {
 .colorpicker {
     margin: 0;
     padding: 0;
-    width: 240;
-    height: 25px;
+    width: 210px;
+    height: 22px;
     border: 0;
-    background: var(--bkgd-main);
+    background: var(--other);
     transition: 200ms;
 }
 

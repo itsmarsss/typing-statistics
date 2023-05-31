@@ -26,6 +26,13 @@ const style = getComputedStyle(document.body);
 
 const settings = document.getElementById("settings");
 const settingsviewer = document.getElementById("settings-viewer");
+
+const general = document.getElementById("general");
+const theme = document.getElementById("theme");
+const choices = document.getElementById("choices");
+const colorpickers = document.getElementById("colorpickers");
+
+const settingscont = document.getElementById("settings-container");
 const settingsback = document.getElementById("settings-back");
 const returntodefault = document.getElementById("returntodefault");
 
@@ -554,6 +561,24 @@ settingsback.addEventListener("click", function () {
     document.documentElement.style.setProperty('--bkgd-more-accent', document.getElementById("bkgd-more-accent").value);
 
     document.documentElement.style.setProperty('--other', document.getElementById("other").value);
+});
+
+general.addEventListener("click", function () {
+    settingscont.style.transform = "rotateY(0deg)";
+
+    setTimeout(function () {
+        colorpickers.style.display = "none";
+        choices.style.display = "block";
+    }, 100);
+});
+
+theme.addEventListener("click", function () {
+    settingscont.style.transform = "rotateY(180deg)";
+
+    setTimeout(function () {
+        colorpickers.style.display = "block";
+        choices.style.display = "none";
+    }, 100);
 });
 
 returntodefault.addEventListener("click", function () {
