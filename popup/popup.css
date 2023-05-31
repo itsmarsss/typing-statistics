@@ -69,6 +69,7 @@ li {
 
 .settings-title {
     font-family: "Poppins";
+    font-size: 12px;
     margin: 0;
     padding: 0;
     color: var(--text);
