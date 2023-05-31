@@ -464,48 +464,56 @@ function escapeHtml(unsafe) {
 }
 
 function assignGrade(wpm) {
-    if (wpm >= 125) {
+    if (wpm >= 200) {
+        return 'hecker';
+    } else if (wpm >= 140) {
         return 'SSS+';
-    } else if (wpm >= 120) {
+    } else if (wpm >= 135) {
         return 'SSS';
-    } else if (wpm >= 115) {
+    } else if (wpm >= 130) {
         return 'SSS-';
-    } else if (wpm >= 110) {
+    } else if (wpm >= 125) {
         return 'SS+';
-    } else if (wpm >= 105) {
+    } else if (wpm >= 120) {
         return 'SS';
-    } else if (wpm >= 100) {
+    } else if (wpm >= 115) {
         return 'SS-';
-    } else if (wpm >= 95) {
+    } else if (wpm >= 110) {
         return 'S+';
-    } else if (wpm >= 90) {
+    } else if (wpm >= 105) {
         return 'S';
-    } else if (wpm >= 85) {
+    } else if (wpm >= 100) {
         return 'S-';
-    } else if (wpm >= 80) {
+    } else if (wpm >= 95) {
         return 'A+';
-    } else if (wpm >= 75) {
+    } else if (wpm >= 90) {
         return 'A';
-    } else if (wpm >= 70) {
+    } else if (wpm >= 85) {
         return 'A-';
-    } else if (wpm >= 65) {
+    } else if (wpm >= 80) {
         return 'B+';
-    } else if (wpm >= 60) {
+    } else if (wpm >= 75) {
         return 'B';
-    } else if (wpm >= 55) {
+    } else if (wpm >= 70) {
         return 'B-';
-    } else if (wpm >= 50) {
+    } else if (wpm >= 65) {
         return 'C+';
-    } else if (wpm >= 45) {
+    } else if (wpm >= 60) {
         return 'C';
-    } else if (wpm >= 40) {
+    } else if (wpm >= 55) {
         return 'C-';
-    } else if (wpm >= 35) {
+    } else if (wpm >= 50) {
         return 'D+';
-    } else if (wpm >= 30) {
+    } else if (wpm >= 45) {
         return 'D';
-    } else if (wpm >= 25) {
+    } else if (wpm >= 40) {
         return 'D-';
+    } else if (wpm >= 35) {
+        return 'E+';
+    } else if (wpm >= 30) {
+        return 'E';
+    } else if (wpm >= 25) {
+        return 'E-';
     } else {
         return 'F';
     }
