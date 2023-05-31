@@ -176,7 +176,6 @@ li {
 .entry>a {
     text-decoration: none;
     color: var(--text);
-    width: 190px;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -198,9 +197,12 @@ li {
 }
 
 .entry-btn {
-    width: 25px;
+    position: relative;
+    width: 50px;
     float: right;
     margin-right: 5px;
+    margin-top: 3px;
+    font-size: 10px;
 }
 
 .title {
