@@ -308,6 +308,8 @@ input:checked+.slider:before {
     overflow: hidden;
     font-size: 10px;
     margin: 0;
+    white-space: nowrap;
+    max-width: 175px;
 }
 
 .entry>a:hover {
@@ -588,6 +590,7 @@ input:checked+.slider:before {
 
 .jsonpart {
     font-family: "Poppins";
+    white-space: nowrap;
     margin: 0;
 }
 
