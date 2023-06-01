@@ -262,7 +262,7 @@ async function logEntries() {
     try {
         weblist.innerHTML = "";
 
-        if (!Array.isArray(sitelist.sites)) {
+        if (!sitelist || !sitelist.sites || sitelist.sites.length == 0 || !Array.isArray(sitelist.sites)) {
             weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
         }
 
@@ -944,7 +944,7 @@ deletebtn.addEventListener("click", async function () {
 
     var newsitelist = { sites: [] };
 
-    for (var i in sitelist) {
+    for (var i in sitelist.sites) {
         if (sitelist.sites[i].url != tabdata.site) {
             newsitelist.sites.push({ url: sitelist.sites[i].url });
         }
