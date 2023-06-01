@@ -68,6 +68,7 @@ const count = document.getElementById("count");
 
 const moreinfo = document.getElementById("more-info");
 const morestats = document.getElementById("more-stats");
+const deletebtn = document.getElementById("delete");
 const moreback = document.getElementById("more-back");
 const jsonlist = document.getElementById("json-list");
 
@@ -240,6 +241,50 @@ function redoWPM() {
     }
 
     document.querySelectorAll('[data-index]')[progress].classList.add("highlight");
+}
+
+async function logEntries() {
+    const sitelist = await getSiteList();
+
+    try {
+        weblist.innerHTML = "";
+
+        if (sitelist.sites.length === 0) {
+            weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
+        }
+
+        for (let i in sitelist.sites) {
+            console.log(sitelist.sites[i].url);
+
+            await getTypeData(sitelist.sites[i].url)
+                .catch((error) => {
+                    console.error(error);
+                });
+
+            const imgurl = `https://www.google.com/s2/favicons?domain=${sitelist.sites[i].url}&sz=12`;
+
+            weblist.innerHTML += `
+<div class="entry">
+    <a href="${tabdata.fullurl}" target="_blank" title="${tabdata.fullurl}">
+        <img class="site-icon" src="${imgurl}">
+        <h4>${sitelist.sites[i].url}</h4>
+    </a>
+    <button class="entry-btn" data-url="${sitelist.sites[i].url}">View &rarr;</button>
+</div>
+        `;
+        }
+    } catch (err) {
+        weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
+        console.error(err);
+    }
+
+    for (let i = 0; i < entries.length; i++) {
+        const entry = entries[i];
+
+        entry.addEventListener("click", function () {
+            goTo(entry.dataset.url);
+        });
+    }
 }
 
 async function logSettings() {
@@ -724,7 +769,7 @@ resetall.addEventListener("click", async function () {
 
     await removeTypeData("sitelist");
 
-    weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
+    logEntries();
 });
 
 returntodefault.addEventListener("click", function () {
@@ -878,6 +923,12 @@ morestats.addEventListener("click", function () {
     }
 });
 
+deletebtn.addEventListener("click", async function () {
+    await removeTypeData(tabdata.site);
+    await removeTypeData("sitelist");
+    logEntries();
+});
+
 moreback.addEventListener("click", function () {
     moreinfo.style.transform = "translateY(500px)";
 });
@@ -891,47 +942,7 @@ typersback.addEventListener("click", function () {
     typingtest.style.transform = "translateX(-300px)";
 });
 
-const sitelist = await getSiteList();
-
-try {
-    weblist.innerHTML = "";
-
-    if (sitelist.sites.length === 0) {
-        weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
-    }
-
-    for (let i in sitelist.sites) {
-        console.log(sitelist.sites[i].url);
-
-        await getTypeData(sitelist.sites[i].url)
-            .catch((error) => {
-                console.error(error);
-            });
-
-        const imgurl = `https://www.google.com/s2/favicons?domain=${sitelist.sites[i].url}&sz=12`;
-
-        weblist.innerHTML += `
-<div class="entry">
-    <a href="${tabdata.fullurl}" target="_blank" title="${tabdata.fullurl}">
-        <img class="site-icon" src="${imgurl}">
-        <h4>${sitelist.sites[i].url}</h4>
-    </a>
-    <button class="entry-btn" data-url="${sitelist.sites[i].url}">View &rarr;</button>
-</div>
-        `;
-    }
-} catch (err) {
-    weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
-    console.error(err);
-}
-
-for (let i = 0; i < entries.length; i++) {
-    const entry = entries[i];
-
-    entry.addEventListener("click", function () {
-        goTo(entry.dataset.url);
-    });
-}
+logEntries();
 
 logSettings();
 
