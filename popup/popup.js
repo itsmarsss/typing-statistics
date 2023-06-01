@@ -262,10 +262,13 @@ async function logEntries() {
     try {
         weblist.innerHTML = "";
 
-
+        if (!Array.isArray(sitelist.sites)) {
+            weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
+        }
 
         for (var i in sitelist.sites) {
             console.log(sitelist.sites[i].url);
+
 
             await getTypeData(sitelist.sites[i].url)
                 .catch((error) => {
