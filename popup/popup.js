@@ -33,6 +33,7 @@ const choices = document.getElementById("choices");
 const colorpickers = document.getElementById("colorpickers");
 
 const settingscont = document.getElementById("settings-container");
+const settingscancel = document.getElementById("settings-cancel");
 const settingsback = document.getElementById("settings-back");
 const returntodefault = document.getElementById("returntodefault");
 const resetall = document.getElementById("reset-all");
@@ -623,6 +624,12 @@ settings.addEventListener("click", async function () {
     settingsviewer.style.transform = "translateY(0px)";
 });
 
+settingscancel.addEventListener("click", function () {
+    logSettings();
+
+    settingsviewer.style.transform = "translateY(-500px)";
+});
+
 settingsback.addEventListener("click", async function () {
     const enabled = document.getElementById("ext-enabled").checked;
 
@@ -717,7 +724,7 @@ resetall.addEventListener("click", async function () {
 
     await removeTypeData("sitelist");
 
-    weblist.innerHTML = "";
+    weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
 });
 
 returntodefault.addEventListener("click", function () {
@@ -914,7 +921,7 @@ try {
         `;
     }
 } catch (err) {
-    weblist.innerHTML = '<h3 id="nodata">No Data.</h3>';
+    weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
     console.error(err);
 }
 

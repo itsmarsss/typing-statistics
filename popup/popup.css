@@ -67,6 +67,18 @@ li {
     margin-right: 5px;
 }
 
+#settings:hover {
+    transform: translateX(5px) scale(1.25);
+}
+
+#shorter-header {
+    width: 130px;
+}
+
+#settings-back:hover {
+    transform: translateX(10px);
+}
+
 .settings-title {
     font-family: "Poppins";
     font-size: 12px;
