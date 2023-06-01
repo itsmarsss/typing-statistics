@@ -262,7 +262,9 @@ async function logEntries() {
     try {
         weblist.innerHTML = "";
 
-        for (let i in sitelist.sites) {
+
+
+        for (var i in sitelist.sites) {
             console.log(sitelist.sites[i].url);
 
             await getTypeData(sitelist.sites[i].url)
@@ -287,7 +289,7 @@ async function logEntries() {
         console.error(err);
     }
 
-    for (let i = 0; i < entries.length; i++) {
+    for (var i = 0; i < entries.length; i++) {
         const entry = entries[i];
 
         entry.addEventListener("click", function () {
@@ -458,9 +460,9 @@ function highlightNext(word) {
 
         if (incorrect.length == 0) {
             incorrectlist.innerHTML = `
-            <div class="nodata correct">
-                All Correct!
-            </div>
+<div class="nodata correct">
+    All Correct!
+</div>
             `;
         }
 
@@ -655,8 +657,8 @@ function getFreq(key) {
 }
 
 async function getCurrentTab() {
-    let queryOptions = { active: true, lastFocusedWindow: true };
-    let [tab] = await chrome.tabs.query(queryOptions);
+    var queryOptions = { active: true, lastFocusedWindow: true };
+    var [tab] = await chrome.tabs.query(queryOptions);
     return tab;
 }
 
@@ -772,7 +774,7 @@ resetall.addEventListener("click", async function () {
 
     const sites = await getSiteList();
 
-    for (let i in sites.sites) {
+    for (var i in sites.sites) {
         await removeTypeData(sites.sites[i].url);
     }
 
@@ -804,7 +806,7 @@ summary.addEventListener("click", async function () {
 
     var cumulativeWPM = 0;
 
-    for (let i in sitelist.sites) {
+    for (var i in sitelist.sites) {
         console.log(sitelist.sites[i].url);
 
         const temptabdata = await getSpecialTypeData(sitelist.sites[i].url)
@@ -843,9 +845,9 @@ summary.addEventListener("click", async function () {
 
 const title_cont = document.getElementsByClassName("title-cont")[0];
 title_cont.addEventListener('mouseenter', () => {
-    let textWidth = title.clientWidth;
-    let boxWidth = parseFloat(getComputedStyle(title_cont).width);
-    let translateVal = Math.min(boxWidth - textWidth, 0);
+    const textWidth = title.clientWidth;
+    const boxWidth = parseFloat(getComputedStyle(title_cont).width);
+    const translateVal = Math.min(boxWidth - textWidth, 0);
     title.style.transitionDuration = "3s";
     title.style.transform = "translateX(" + (translateVal - 10) + "px)";
 });
@@ -937,13 +939,15 @@ deletebtn.addEventListener("click", async function () {
 
     const sitelist = await getSiteList();
 
-    const siteIndex = sitelist.sites.findIndex(function (item) {
-        return item.url === tabdata.site;
-    });
+    var newsitelist = { sites: [] };
 
-    if (siteIndex !== -1) {
-        await setSiteList(sitelist.sites.splice(siteIndex, 1));
+    for (var i in sitelist) {
+        if (sitelist.sites[i].url != tabdata.site) {
+            newsitelist.sites.push({ url: sitelist.sites[i].url });
+        }
     }
+
+    await setSiteList(newsitelist);
 
     logEntries();
 
