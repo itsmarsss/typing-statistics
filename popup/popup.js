@@ -302,7 +302,29 @@ async function logEntries() {
 }
 
 async function logSettings() {
-    const config = await getSettings();
+    var config = await getSettings();
+
+    if (config == {} || !config || !("general" in config) || !("theme" in config)) {
+        const body = {
+            general: {
+                enabled: true
+            },
+            theme: {
+                text: style.getPropertyValue("--text"),
+                text_accent:  style.getPropertyValue("--text-accent"),
+                text_more_accent:  style.getPropertyValue("--text-more-accent"),
+    
+                bkgd_main:  style.getPropertyValue("--bkgd-main"),
+                bkgd_accent:  style.getPropertyValue("--bkgd-accent"),
+                bkgd_more_accent:  style.getPropertyValue("--bkgd-more-accent"),
+    
+                other:  style.getPropertyValue("--other")
+            }
+        }
+
+        await setSettings(body);
+        config = await getSettings();
+    }
 
     document.getElementById("ext-enabled").checked = config.general.enabled;
 
