@@ -145,10 +145,32 @@ var typingstatistics = (function () {
         });
     }
 
-    document.addEventListener('keydown', function (event) {
-        const key = event.key.toLowerCase();
-        updateTabData(key);
-        updateSiteList();
+    function getSettings() {
+        return new Promise((resolve, reject) => {
+            chrome.storage.local.get(["settings"], (result) => {
+                if (chrome.runtime.lastError) {
+                    reject(chrome.runtime.lastError);
+                } else {
+                    console.log("Settings queried");
+    
+                    const config = JSON.parse(result.settings || "{}");
+    
+                    console.log(config);
+    
+                    resolve(config);
+                }
+            });
+        });
+    }
+
+    document.addEventListener('keydown', async function (event) {
+        const config = await getSettings();
+
+        if(config.general.enabled) {
+            const key = event.key.toLowerCase();
+            updateTabData(key);
+            updateSiteList();
+        }
     });
 
     console.log("Typing Statistics - Connected");
