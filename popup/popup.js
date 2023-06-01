@@ -927,6 +927,8 @@ deletebtn.addEventListener("click", async function () {
     await removeTypeData(tabdata.site);
     await removeTypeData("sitelist");
     logEntries();
+
+    back.click();
 });
 
 moreback.addEventListener("click", function () {
