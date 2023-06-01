@@ -317,6 +317,7 @@ async function logSettings() {
     document.getElementById("other").value = config.theme.other || style.getPropertyValue('--other');
 
     Chart.defaults.global.defaultFontColor = config.theme.text || style.getPropertyValue('--text');
+    console.log(config.theme.text);
 
     document.documentElement.style.setProperty('--text', config.theme.text || style.getPropertyValue('--text'));
     document.documentElement.style.setProperty('--text-accent', config.theme.text_accent || style.getPropertyValue('--text-accent'));
@@ -666,7 +667,30 @@ async function getCurrentTab() {
 }
 
 settings.addEventListener("click", async function () {
-    const config = await getSettings();
+    var config = await getSettings();
+
+    if (config == {} || !config || !("general" in config) || !("theme" in config)) {
+        const body = {
+            general: {
+                enabled: true
+            },
+            theme: {
+                text: style.getPropertyValue("--text"),
+                text_accent:  style.getPropertyValue("--text-accent"),
+                text_more_accent:  style.getPropertyValue("--text-more-accent"),
+    
+                bkgd_main:  style.getPropertyValue("--bkgd-main"),
+                bkgd_accent:  style.getPropertyValue("--bkgd-accent"),
+                bkgd_more_accent:  style.getPropertyValue("--bkgd-more-accent"),
+    
+                other:  style.getPropertyValue("--other")
+            }
+        }
+
+        await setSettings(body);
+        config = await getSettings();
+    }
+
 
     document.getElementById("ext-enabled").checked = config.general.enabled;
 
