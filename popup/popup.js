@@ -104,6 +104,19 @@ function getSiteList() {
     });
 }
 
+function setSiteList(sitelist) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.set({ sitelist: JSON.stringify(sitelist) }, () => {
+            console.log("SiteList set");
+
+            console.log("After");
+            console.log(sitelist);
+
+            resolve();
+        });
+    });
+}
+
 function getTypeData(site) {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get(site, (result) => {
@@ -925,7 +938,17 @@ morestats.addEventListener("click", function () {
 
 deletebtn.addEventListener("click", async function () {
     await removeTypeData(tabdata.site);
-    await removeTypeData("sitelist");
+
+    const sitelist = await getSiteList();
+
+    const siteIndex = sitelist.sites.findIndex(function (item) {
+        return item.url === tabdata.site;
+    });
+
+    if (siteIndex !== -1) {
+        await setSiteList(sitelist.sites.splice(siteIndex, 1));
+    }
+
     logEntries();
 
     back.click();
