@@ -262,10 +262,6 @@ async function logEntries() {
     try {
         weblist.innerHTML = "";
 
-        if (sitelist.sites.length === 0) {
-            weblist.innerHTML = '<h3 class="nodata">No Data.</h3>';
-        }
-
         for (let i in sitelist.sites) {
             console.log(sitelist.sites[i].url);
 
