@@ -224,12 +224,14 @@ function setLength(len) {
         const preWords = document.getElementById("word-" + wpmlength);
         preWords.style.fontSize = "12px";
         preWords.style.marginBottom = "10px";
+        preWords.style.textDecoration = "none";
     }
     wpmlength = len;
 
     const postWords = document.getElementById("word-" + wpmlength);
     postWords.style.fontSize = "15px";
     postWords.style.marginBottom = "0px";
+    postWords.style.textDecoration = "underline";
     redoWPM();
 }
 
@@ -311,14 +313,14 @@ async function logSettings() {
             },
             theme: {
                 text: style.getPropertyValue("--text"),
-                text_accent:  style.getPropertyValue("--text-accent"),
-                text_more_accent:  style.getPropertyValue("--text-more-accent"),
-    
-                bkgd_main:  style.getPropertyValue("--bkgd-main"),
-                bkgd_accent:  style.getPropertyValue("--bkgd-accent"),
-                bkgd_more_accent:  style.getPropertyValue("--bkgd-more-accent"),
-    
-                other:  style.getPropertyValue("--other")
+                text_accent: style.getPropertyValue("--text-accent"),
+                text_more_accent: style.getPropertyValue("--text-more-accent"),
+
+                bkgd_main: style.getPropertyValue("--bkgd-main"),
+                bkgd_accent: style.getPropertyValue("--bkgd-accent"),
+                bkgd_more_accent: style.getPropertyValue("--bkgd-more-accent"),
+
+                other: style.getPropertyValue("--other")
             }
         }
 
@@ -698,14 +700,14 @@ settings.addEventListener("click", async function () {
             },
             theme: {
                 text: style.getPropertyValue("--text"),
-                text_accent:  style.getPropertyValue("--text-accent"),
-                text_more_accent:  style.getPropertyValue("--text-more-accent"),
-    
-                bkgd_main:  style.getPropertyValue("--bkgd-main"),
-                bkgd_accent:  style.getPropertyValue("--bkgd-accent"),
-                bkgd_more_accent:  style.getPropertyValue("--bkgd-more-accent"),
-    
-                other:  style.getPropertyValue("--other")
+                text_accent: style.getPropertyValue("--text-accent"),
+                text_more_accent: style.getPropertyValue("--text-more-accent"),
+
+                bkgd_main: style.getPropertyValue("--bkgd-main"),
+                bkgd_accent: style.getPropertyValue("--bkgd-accent"),
+                bkgd_more_accent: style.getPropertyValue("--bkgd-more-accent"),
+
+                other: style.getPropertyValue("--other")
             }
         }
 

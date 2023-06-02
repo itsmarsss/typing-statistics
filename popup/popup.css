@@ -641,7 +641,6 @@ input:checked+.slider:before {
 }
 
 .words {
-    text-decoration: underline;
     margin-left: 3px;
     margin-right: 3px;
     cursor: pointer;
