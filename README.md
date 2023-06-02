@@ -1,7 +1,7 @@
 # Typing-Statistics Chrome Extension
 
 ## NOTICE
-> :warning: :warning: :warning: **WARNING:** This project is an old version of Typing-Statistics. Please install the most recent Typing-Statistics version from a trusted sourse (e.g. Chrome Webstore/Firefox Addons) :warning: :warning: :warning:
+> :warning: :warning: :warning: **WARNING:** This project is an old version of Typing-Statistics. Please install the most recent Typing-Statistics version from a trusted source (e.g. Chrome Webstore/Firefox Addons) :warning: :warning: :warning:
 
 The Typing-Statistics Chrome extension is a tool that tracks and provides insights into your typing habits while using the Chrome browser. It offers valuable statistics such as the number of letters, words, and your typing speed in words per minute (WPM). 
 
