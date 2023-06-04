@@ -29,16 +29,6 @@ The Typing-Statistics Chrome extension is a tool that tracks and provides insigh
 3. In the confirmation dialog, click "Add".
 4. The Typing-Statistics add-on should now be installed in your Firefox browser.
 
-### Manual ZIP File Upload
-
-1. Go to the [Typing-Statistics GitHub releases](https://github.com/itsmarsss/Typing-Statistics/releases).
-2. Scroll down on the first release and click "Typing-Statistics.zip" to download.
-3. Extract the ZIP file to a folder on your computer.
-4. Open Google Chrome or Mozilla Firefox and go to the browser's extensions page.
-5. Enable "Developer mode" (if not already enabled).
-6. Click "Load unpacked" and select the folder where you extracted the ZIP file.
-7. The Typing-Statistics extension/add-on should now be installed in your browser.
-
 ## Usage
 
 Once the Typing-Statistics extension is installed, it will automatically track your typing statistics while you use Chrome. You can access the extension's features and view your typing data by following these steps:
