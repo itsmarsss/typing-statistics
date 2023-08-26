@@ -1,9 +1,6 @@
-# Typing-Statistics Chrome Extension
+# Typing Statistics Chrome Extension
 
-## NOTICE
-> :warning: :warning: :warning: **WARNING:** This project is an old version of Typing-Statistics. Please install the most recent Typing-Statistics version from a trusted source (e.g. Chrome Webstore/Firefox Addons) :warning: :warning: :warning:
-
-The Typing-Statistics Chrome extension is a tool that tracks and provides insights into your typing habits while using the Chrome browser. It offers valuable statistics such as the number of letters, words, and your typing speed in words per minute (WPM). 
+The Typing Statistics Chrome extension is a tool that tracks and provides insights into your typing habits while using the Chrome browser. It offers valuable statistics such as the number of letters, words, and your typing speed in words per minute (WPM). 
 
 ## Features
 
@@ -17,23 +14,23 @@ The Typing-Statistics Chrome extension is a tool that tracks and provides insigh
 
 ### Chrome Web Store
 
-1. Open Google Chrome and go to the [Typing-Statistics extension page](https://chrome.google.com/webstore/detail/typing-statistics/pcogcfinllbgfmhmcpnighcpepnfpfca).
+1. Open Google Chrome and go to the [Typing Statistics extension page](https://chrome.google.com/webstore/detail/typing-statistics-auto-ty/pcogcfinllbgfmhmcpnighcpepnfpfca).
 2. Click the "Add to Chrome" button.
 3. In the confirmation dialog, click "Add Extension".
-4. The Typing-Statistics extension should now be installed in your Chrome browser.
+4. The Typing Statistics extension should now be installed in your Chrome browser.
 
 ### Firefox Add-on
 
-1. Open Mozilla Firefox and go to the [Typing-Statistics add-on page](https://addons.mozilla.org/firefox/addon/typing-statistics/).
+1. Open Mozilla Firefox and go to the [Typing Statistics add-on page](https://addons.mozilla.org/firefox/addon/typing-statistics/).
 2. Click the "Add to Firefox" button.
 3. In the confirmation dialog, click "Add".
-4. The Typing-Statistics add-on should now be installed in your Firefox browser.
+4. The Typing Statistics add-on should now be installed in your Firefox browser.
 
 ## Usage
 
-Once the Typing-Statistics extension is installed, it will automatically track your typing statistics while you use Chrome. You can access the extension's features and view your typing data by following these steps:
+Once the Typing Statistics extension is installed, it will automatically track your typing statistics while you use Chrome. You can access the extension's features and view your typing data by following these steps:
 
-1. Click on the Typing-Statistics extension icon in the Chrome toolbar.
+1. Click on the Typing Statistics extension icon in the Chrome toolbar.
 
 2. A dropdown menu will appear, showing you a list of visited sites. Click into any arrow and you will be shown current typing statistics and options to access more details.
 
@@ -43,4 +40,4 @@ Once the Typing-Statistics extension is installed, it will automatically track y
 
 ## License
 
-The Typing-Statistics Chrome extension is licensed under the [Apache License 2.0](https://github.com/itsmarsss/Typing-Statistics/blob/main/LICENSE).
+The Typing Statistics Chrome extension is licensed under the [GNU 3.0 license](LICENSE).
